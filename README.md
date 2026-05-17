@@ -101,6 +101,29 @@ Addresses the organisational and governance dimension of an ITIL v5 IASD transit
 
 ---
 
+### 5. [Unified ITSM Web Platform: Architecture and Integration Guide](ITILV5-Unified-Platform-Architecture.md)
+
+**Type:** Final Synthesis Paper  
+**Audience:** IT architects, service desk managers, IT directors, senior engineers
+
+The capstone paper of this series. Synthesises all preceding papers and proposes a **Unified ITSM Web Platform (UIWP)** — a custom-built web application that acts as a single operational pane of glass, consolidating data from every tool and service described in the series. Covers which services are suitable for data routing, iframe embedding, or webhook push, and specifies the full system architecture.
+
+**Key topics covered:**
+- Service-by-service integration suitability assessment (JSM, Intune, M365, Graph API, PLA, PHMS, MIT, WEC, WLAN controllers, RADIUS/NPS, SIEM/Grafana)
+- Integration modes explained: API pull, webhook push, iframe embedding — and why most enterprise portals block embedding
+- Full system architecture: presentation tier (React/TypeScript), application tier (Node.js/FastAPI), data tier (PostgreSQL, Redis, Elasticsearch), integration layer
+- Caching strategy, WebSocket real-time updates, webhook receiver design
+- Credential management and network security architecture
+- Key UI views: Device Context Panel, Printer Fleet Health, POS Operations View, XLA Reports, Change Register, Endpoint Health Heatmap
+- Illustrated user journeys: device investigation, printer fleet morning check, POS incident response
+- **Four-phase implementation plan** aligned to IASD deployment phases
+- ITIL v5 governance alignment: UIWP as a PSLM-managed service; 6C compliance for UIWP-initiated actions; data governance and DPIA obligations
+- Full technology stack recommendation with rationale
+
+**Technologies:** React, TypeScript, Node.js, FastAPI, PostgreSQL, Redis, Elasticsearch, Grafana, Docker/Kubernetes, Azure Key Vault, Entra ID SSO
+
+---
+
 ## Quick Reference: How the Series Fits Together
 
 ```
@@ -113,8 +136,11 @@ Research Paper (Paper 1)
 ├── Jira & Intune Integration (Paper 3)
 │   JSM API patterns · Intune Remediations · WEC desktop monitoring · security
 │
-└── Change Management & Policy (Paper 4)
-    Gap analysis · policy templates · change workflows · phased roadmap · CAB governance
+├── Change Management & Policy (Paper 4)
+│   Gap analysis · policy templates · change workflows · phased roadmap · CAB governance
+│
+└── Unified Platform Architecture (Paper 5)  ← Final Synthesis
+    Integration assessment · system architecture · UI views · implementation phasing
 ```
 
 ---
@@ -123,14 +149,15 @@ Research Paper (Paper 1)
 
 | Category | Technologies |
 | --- | --- |
-| **Languages** | Python, PowerShell, C#/.NET |
+| **Languages** | Python, PowerShell, C#/.NET, TypeScript |
 | **Device Management** | Microsoft Intune, Windows Event Collector/Forwarding, Group Policy |
-| **Cloud Services** | Microsoft 365, Microsoft Graph API, Microsoft Entra ID (Azure AD), MSAL |
+| **Cloud Services** | Microsoft 365, Microsoft Graph API, Microsoft Entra ID (Azure AD), MSAL, Azure Key Vault |
 | **ITSM Platforms** | Jira Service Management, GLPI, iTop |
 | **Monitoring Protocols** | SNMP (RFC 3805 Printer MIB), Windows Event Log, OPOS/JavaPOS |
-| **Databases** | SQLite, PostgreSQL |
-| **Web / API** | Flask, FastAPI, REST API, Webhooks, Atlassian Document Format (ADF) |
+| **Databases** | SQLite, PostgreSQL, Redis, Elasticsearch / OpenSearch |
+| **Web / API** | React, Node.js, FastAPI, Flask, REST API, Webhooks, WebSockets, Atlassian Document Format (ADF) |
 | **Dashboards** | Power BI, Grafana, JSM Dashboards |
+| **Infrastructure** | Docker, Kubernetes, Azure Container Apps, nginx |
 
 ---
 
@@ -138,15 +165,15 @@ Research Paper (Paper 1)
 
 | ITIL v5 Practice | Papers Where Covered |
 | --- | --- |
-| Service Desk | 1, 2, 3, 4 |
-| Incident Management | 1, 2, 3, 4 |
-| Problem Management | 1, 2, 3, 4 |
-| Monitoring & Event Management | 1, 2, 3 |
-| Service Request Management | 1, 2 |
-| Change Enablement (PIC module) | 1, 4 |
-| Service Level Management / XLA | 1, 4 |
-| AI Governance (6C model) | 1, 4 |
-| IT Asset Management / CMDB | 2, 3, 4 |
+| Service Desk | 1, 2, 3, 4, 5 |
+| Incident Management | 1, 2, 3, 4, 5 |
+| Problem Management | 1, 2, 3, 4, 5 |
+| Monitoring & Event Management | 1, 2, 3, 5 |
+| Service Request Management | 1, 2, 5 |
+| Change Enablement (PIC module) | 1, 4, 5 |
+| Service Level Management / XLA | 1, 4, 5 |
+| AI Governance (6C model) | 1, 4, 5 |
+| IT Asset Management / CMDB | 2, 3, 4, 5 |
 | Supplier Management | 2 |
 
 ---
