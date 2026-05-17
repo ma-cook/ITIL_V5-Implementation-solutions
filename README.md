@@ -12,7 +12,7 @@
 
 ## About This Series
 
-This repository contains a series of research papers and implementation guides exploring how **ITIL Version 5** (released February–May 2026) can be applied practically to IT service desk operations. The series focuses on on-site and remote environments — desktop office hardware, Microsoft 365 cloud services, Microsoft Intune device management, and point-of-sale hardware — and provides working code patterns, policy templates, and integration guides throughout.
+This repository contains a series of research papers and implementation guides exploring how **ITIL Version 5** (released February–May 2026) can be applied practically to IT service desk operations. The series focuses on on-site and remote environments - desktop office hardware, Microsoft 365 cloud services, Microsoft Intune device management, and point-of-sale hardware - and provides working code patterns, policy templates, and integration guides throughout.
 
 The series is structured as a primary research paper accompanied by supplementary implementation chapters. Each chapter builds on the last; reading the primary paper first is recommended.
 
@@ -25,7 +25,7 @@ The series is structured as a primary research paper accompanied by supplementar
 **Type:** Primary Research Paper  
 **Audience:** Service desk managers, ITSM practitioners, IT leadership
 
-The foundational paper of this series. Examines how ITIL v5's new constructs — the **Product and Service Lifecycle Model (PSLM)**, **Experience Level Agreements (XLAs)**, and the **6C AI Governance Model** — apply to an active service desk responsible for hardware, peripheral, and connectivity support. Proposes the **Integrated Active Service Desk (IASD)** model.
+The foundational paper of this series. Examines how ITIL v5's new constructs - the **Product and Service Lifecycle Model (PSLM)**, **Experience Level Agreements (XLAs)**, and the **6C AI Governance Model** - apply to an active service desk responsible for hardware, peripheral, and connectivity support. Proposes the **Integrated Active Service Desk (IASD)** model.
 
 **Key topics covered:**
 - ITIL v5 vs ITIL 4: key changes for service desk operations

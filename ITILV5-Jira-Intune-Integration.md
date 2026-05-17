@@ -17,7 +17,7 @@
 
 The preceding chapters established the theoretical framework of an **Integrated Active Service Desk (IASD)** and provided custom software implementations for the three highest-volume recurring issue categories: printer faults, POS hardware, and Microsoft 365 issues. Those tools (PLA, PHMS, and MIT) all depend on a central ITSM platform to receive and act on the events they generate.
 
-This chapter focuses on **Jira Service Management (JSM)** as the ITSM platform, providing integration patterns, API examples, automation rules, and Microsoft Intune co-management patterns that are not covered by the open-source platform guidance in Part 4 of the custom software chapter. It also addresses the **desktop office environment** monitoring gap — the broad category of endpoint health issues that affect standard office workers on managed Windows or macOS devices outside of POS contexts.
+This chapter focuses on **Jira Service Management (JSM)** as the ITSM platform, providing integration patterns, API examples, automation rules, and Microsoft Intune co-management patterns that are not covered by the open-source platform guidance in Part 4 of the custom software chapter. It also addresses the **desktop office environment** monitoring gap - the broad category of endpoint health issues that affect standard office workers on managed Windows or macOS devices outside of POS contexts.
 
 > 💡 Jira Service Management is chosen here because it is one of the most widely adopted ITSM platforms in mid-market and enterprise organisations, particularly those already using the Atlassian ecosystem (Jira Software, Confluence). Its REST API, built-in automation engine, and native integration with tools like Opsgenie, Slack, Microsoft Teams, and Azure DevOps make it a practical target for the custom integration patterns described in this series.
 
@@ -147,7 +147,7 @@ class JSMClient:
 
 ### 2.2 Atlassian Document Format (ADF) Helper
 
-JSM's REST API v3 requires issue descriptions and comments in **Atlassian Document Format (ADF)** — a JSON-based rich text format. The following helper converts plain text and structured data into ADF:
+JSM's REST API v3 requires issue descriptions and comments in **Atlassian Document Format (ADF)** - a JSON-based rich text format. The following helper converts plain text and structured data into ADF:
 
 ```python
 # adf_builder.py — build Atlassian Document Format bodies
@@ -309,9 +309,9 @@ JSM's built-in **Automation** engine allows no-code/low-code rules to trigger on
 
 Automation rules are configured in *Project Settings → Automation* (project-scoped) or *Settings → Automation* (global, enterprise plan). Each rule has:
 
-- **Trigger** — what starts the rule (issue created, comment added, scheduled, webhook received)
-- **Conditions** — filters that must pass for the rule to run
-- **Actions** — what the rule does (transition issue, add comment, send notification, call webhook)
+- **Trigger** - what starts the rule (issue created, comment added, scheduled, webhook received)
+- **Conditions** - filters that must pass for the rule to run
+- **Actions** - what the rule does (transition issue, add comment, send notification, call webhook)
 
 ### 3.2 Key Automation Rules for the IASD Model
 
@@ -347,7 +347,7 @@ Automation rules are configured in *Project Settings → Automation* (project-sc
 **Trigger:** Issue Created  
 **Conditions:** `Project = HW` AND `Labels contains printer`  
 **Actions:**
-1. Search for open Problems: JQL — `project = HW AND issuetype = Problem AND status != Done AND labels = printer`
+1. Search for open Problems: JQL - `project = HW AND issuetype = Problem AND status != Done AND labels = printer`
 2. If found: link new incident to open problem (*"is caused by"*)
 3. Add comment: *"This incident has been automatically linked to open Problem [KEY]. Technician should review the problem record for context before investigating."*
 
@@ -392,13 +392,13 @@ def notify_jsm_webhook(event_type: str, payload: dict) -> bool:
 
 Microsoft Intune is the device management backbone for the IASD model in organisations using Microsoft 365. In the context of ITIL v5's **Monitor, Support and Fulfil** cluster, Intune functions as:
 
-- **A monitoring data source** — device compliance status, hardware inventory, app deployment status, Windows Update compliance
-- **A remediation platform** — Intune can push PowerShell remediation scripts, app deployments, and configuration policies without requiring a technician to touch the device
-- **A change execution platform** — approved standard changes (ITIL v5 Change Enablement) can be executed as Intune configuration profiles or scripts
+- **A monitoring data source** - device compliance status, hardware inventory, app deployment status, Windows Update compliance
+- **A remediation platform** - Intune can push PowerShell remediation scripts, app deployments, and configuration policies without requiring a technician to touch the device
+- **A change execution platform** - approved standard changes (ITIL v5 Change Enablement) can be executed as Intune configuration profiles or scripts
 
 ### 4.2 Intune Remediations (Proactive Remediation Scripts)
 
-**Intune Remediations** (formerly *Proactive Remediations*) are pairs of PowerShell scripts — a *Detection* script and a *Remediation* script — that Intune runs on managed devices on a schedule. This is the primary mechanism for implementing **Stage 3 automated remediation** from the Automation Maturity Ladder.
+**Intune Remediations** (formerly *Proactive Remediations*) are pairs of PowerShell scripts - a *Detection* script and a *Remediation* script - that Intune runs on managed devices on a schedule. This is the primary mechanism for implementing **Stage 3 automated remediation** from the Automation Maturity Ladder.
 
 The detection script exits with code `0` (healthy) or `1` (needs remediation). If it exits `1`, Intune automatically runs the remediation script and reports the outcome.
 
@@ -723,7 +723,7 @@ def _raise_noncompliant_incident(device: dict):
 
 ### 5.1 The Desktop Office Monitoring Gap
 
-The existing custom tools cover printers, POS hardware, and M365 cloud services. The broader category of **desktop office environment** issues — covering standard Windows and macOS workstations, peripheral connectivity, docking stations, and local network problems — requires a complementary monitoring approach. These issues are the highest-volume category by ticket count in most office-based service desks.
+The existing custom tools cover printers, POS hardware, and M365 cloud services. The broader category of **desktop office environment** issues - covering standard Windows and macOS workstations, peripheral connectivity, docking stations, and local network problems - requires a complementary monitoring approach. These issues are the highest-volume category by ticket count in most office-based service desks.
 
 Common desktop office issues amenable to automated detection and remediation:
 
@@ -742,7 +742,7 @@ Common desktop office issues amenable to automated detection and remediation:
 
 ### 5.2 Endpoint Event Collection with WEC
 
-**Windows Event Forwarding (WEF)** with a central **Windows Event Collector (WEC)** server allows collecting events from all managed endpoints without deploying a third-party agent. This is ITIL v5-aligned — it uses infrastructure that is already present in most Windows domain environments.
+**Windows Event Forwarding (WEF)** with a central **Windows Event Collector (WEC)** server allows collecting events from all managed endpoints without deploying a third-party agent. This is ITIL v5-aligned - it uses infrastructure that is already present in most Windows domain environments.
 
 Configure subscription via Group Policy (`Computer Configuration → Administrative Templates → Windows Components → Event Forwarding`):
 
@@ -907,9 +907,9 @@ JSM provides built-in dashboard gadgets for displaying queue status, SLA perform
 JSM's built-in reporting, supplemented by Confluence integration, provides the following management-level views:
 
 - **Weekly Automated Resolution Rate**: percentage of closed tickets that were opened and resolved automatically without technician action (label: `auto-detected` → resolution: `Automated Fix`)
-- **Recurrence Rate by Category**: Problem records raised in the period vs. unique CI count — measures effectiveness of problem management
+- **Recurrence Rate by Category**: Problem records raised in the period vs. unique CI count - measures effectiveness of problem management
 - **XLA Trend**: average satisfaction score from post-resolution surveys (configured via JSM's Customer Satisfaction surveys) plotted against ticket volume
-- **Top Offending CIs**: which printers, devices, or M365 users generated the most incidents in the reporting period — drives proactive hardware refresh decisions
+- **Top Offending CIs**: which printers, devices, or M365 users generated the most incidents in the reporting period - drives proactive hardware refresh decisions
 
 ---
 
@@ -919,24 +919,24 @@ JSM's built-in reporting, supplemented by Confluence integration, provides the f
 
 All custom tool integrations with JSM must follow secure credential management practices:
 
-- **API tokens** must be stored in a secrets manager (Azure Key Vault, HashiCorp Vault, AWS Secrets Manager) and injected as environment variables at runtime — never hardcoded in scripts or committed to source control
+- **API tokens** must be stored in a secrets manager (Azure Key Vault, HashiCorp Vault, AWS Secrets Manager) and injected as environment variables at runtime - never hardcoded in scripts or committed to source control
 - **JSM service accounts** should be dedicated accounts (not personal accounts) with the minimum required permissions: typically *Service Desk Agent* role scoped to the relevant projects
-- **Webhook URLs** from JSM are effectively bearer tokens — rotate them quarterly and treat them as secrets
+- **Webhook URLs** from JSM are effectively bearer tokens - rotate them quarterly and treat them as secrets
 - **Intune remediation scripts** must be signed with a code signing certificate issued from your organisation's PKI. Unsigned scripts represent an execution risk and may be blocked by Intune policy
 
 ### 7.2 Audit and Compliance
 
 All automated JSM actions should be traceable to a change record:
 
-- Every automation rule that creates, transitions, or modifies issues should include a **comment identifying the automation rule name and trigger** — this provides an audit trail distinguishing automated from manual actions
+- Every automation rule that creates, transitions, or modifies issues should include a **comment identifying the automation rule name and trigger** - this provides an audit trail distinguishing automated from manual actions
 - Intune Remediation outcomes are logged in the Intune portal (Device → Monitor → Remediations) and these logs should be retained for a minimum of 90 days
-- JSM issue history is immutable — every comment, transition, and edit is logged with timestamp and actor, satisfying ITIL v5's audit trail requirement for standard changes
+- JSM issue history is immutable - every comment, transition, and edit is logged with timestamp and actor, satisfying ITIL v5's audit trail requirement for standard changes
 
 ### 7.3 Scope Limitation for Automated Actions
 
 Automated integrations must be scoped to prevent unintended privilege escalation:
 
-- The JSM service account used by custom tools should **not** have permission to approve Change Requests or modify project configuration — these actions must remain human-controlled
-- Intune Remediation scripts should run under the **SYSTEM** account with the minimum permissions required — avoid granting broader admin rights than necessary
-- Graph API permissions for the MIT application should be reviewed against the **principle of least privilege** — use application permissions only for the specific endpoints required, not `Directory.ReadWrite.All` or other broad scopes
+- The JSM service account used by custom tools should **not** have permission to approve Change Requests or modify project configuration - these actions must remain human-controlled
+- Intune Remediation scripts should run under the **SYSTEM** account with the minimum permissions required - avoid granting broader admin rights than necessary
+- Graph API permissions for the MIT application should be reviewed against the **principle of least privilege** - use application permissions only for the specific endpoints required, not `Directory.ReadWrite.All` or other broad scopes
 

@@ -17,7 +17,7 @@
 
 The preceding chapters of this series focused on *what* to build: monitoring tools, automated remediations, and ITSM integrations. This chapter addresses the organisational change challenge that must accompany technical implementation: **how to compare your current policies and procedures against ITIL v5, identify gaps, and drive controlled updates through a change management workflow that itself demonstrates ITIL v5 principles**.
 
-An ITSM transformation that deploys sophisticated automation without updating the policies that govern it creates a compliance gap. Equally, a policy update programme that does not account for ITIL v5's new constructs — the Product and Service Lifecycle Model, Experience Level Agreements, and the 6C AI governance framework — will miss the structural improvements the framework offers.
+An ITSM transformation that deploys sophisticated automation without updating the policies that govern it creates a compliance gap. Equally, a policy update programme that does not account for ITIL v5's new constructs - the Product and Service Lifecycle Model, Experience Level Agreements, and the 6C AI governance framework - will miss the structural improvements the framework offers.
 
 > 💡 This chapter is designed to be practical and actionable. It provides a gap analysis framework, a policy inventory template, change management workflow patterns for both JSM and generic ITSM platforms, and a phased implementation roadmap that ties the technical chapters together into a governed transition plan.
 
@@ -53,7 +53,7 @@ Unlike the SVC's parallel activities, the PSLM implies a **deliberate lifecycle 
 - **Discover stage procedures** should capture how telemetry data from *Support* (incident trends, hardware failure rates, XLA scores) feeds into decisions about new services or service changes
 - **Design stage procedures** should include a step for reviewing endpoint health score data and known recurring issues before finalising a service design
 - **Transition stage** should reference ITIL v5's *change enablement* process and require an automated remediation impact assessment for changes to device configurations
-- **Support stage procedures** — the largest set — should reference the IASD model's four operational modes (Silent Monitoring, Proactive Engagement, Automated Remediation, Human-Led Response)
+- **Support stage procedures** - the largest set - should reference the IASD model's four operational modes (Silent Monitoring, Proactive Engagement, Automated Remediation, Human-Led Response)
 - **Improve stage procedures** should mandate XLA review alongside SLA review at defined intervals
 
 ### 1.3 New Policies Required by ITIL v5
@@ -239,7 +239,7 @@ Automated remediation scripts may be classified as Standard Changes when all of 
 
 1. The script has been tested in a controlled environment and produces a documented, consistent outcome
 2. A rollback procedure exists and has been tested
-3. The action scope is bounded — it cannot escalate its own permissions or modify systems outside the defined target
+3. The action scope is bounded - it cannot escalate its own permissions or modify systems outside the defined target
 4. The script is stored in version control with access restricted to the automation service account and named engineers
 5. The CAB sub-committee has reviewed and approved the classification
 
@@ -262,7 +262,7 @@ Automated remediation scripts may be classified as Standard Changes when all of 
 
 **1. Purpose**
 
-This policy establishes the organisation's commitment to measuring and improving the quality of IT service experiences, not merely technical SLA metrics. XLAs exist alongside — not instead of — SLAs.
+This policy establishes the organisation's commitment to measuring and improving the quality of IT service experiences, not merely technical SLA metrics. XLAs exist alongside - not instead of - SLAs.
 
 **2. Core XLA Metrics**
 
@@ -278,7 +278,7 @@ This policy establishes the organisation's commitment to measuring and improving
 **3. Survey Deployment**
 
 - Post-resolution surveys are sent automatically via the ITSM platform within 1 hour of ticket closure
-- Survey content: single question — *"How easy was it to get your IT issue resolved today?"* (1–5 scale) — plus optional free-text comment
+- Survey content: single question - *"How easy was it to get your IT issue resolved today?"* (1–5 scale) - plus optional free-text comment
 - Surveys are not sent for auto-closed tickets where no user interaction occurred; instead, a 24-hour follow-up is sent: *"Your IT issue was resolved automatically. Did this fix your problem?"* (Yes / No / Still having issues)
 
 **4. XLA Review Cadence**
@@ -322,7 +322,7 @@ Every automated action in the IASD model must be registered as a Standard Change
 
 ### 4.3 Normal Change Workflow in JSM
 
-New IASD components — new Intune remediation scripts, new JSM automation rules, changes to health score weightings — should go through a Normal Change workflow in JSM:
+New IASD components - new Intune remediation scripts, new JSM automation rules, changes to health score weightings - should go through a Normal Change workflow in JSM:
 
 ```
 RFC Submitted → Initial Assessment → Technical Review → 
@@ -398,7 +398,7 @@ Emergency changes in the IASD context are most likely triggered by:
 
 ---
 
-## Part 5 · Implementation Phases — From Current State to ITIL v5 IASD
+## Part 5 · Implementation Phases - From Current State to ITIL v5 IASD
 
 ### 5.1 Phase Model Overview
 
@@ -416,7 +416,7 @@ Phase 3: Automated Remediation (Months 7–12)
 Phase 4: Optimisation and AI Integration (Months 13–24)
 ```
 
-### 5.2 Phase 0 — Assessment and Baseline *(Weeks 1–4)*
+### 5.2 Phase 0 - Assessment and Baseline *(Weeks 1–4)*
 
 **Objective:** Understand current state. Establish baselines. Produce the gap analysis.
 
@@ -442,7 +442,7 @@ Phase 4: Optimisation and AI Integration (Months 13–24)
 > ✅ Policy action list prioritised and owners assigned  
 > ✅ JSM project structure agreed (or existing ITSM project structure reviewed)
 
-### 5.3 Phase 1 — Foundation *(Months 1–3)*
+### 5.3 Phase 1 - Foundation *(Months 1–3)*
 
 **Objective:** Deploy monitoring infrastructure. Create highest-priority policy documents. Establish the CAB sub-committee for IASD governance.
 
@@ -456,12 +456,12 @@ Phase 4: Optimisation and AI Integration (Months 13–24)
 - [ ] Implement endpoint health score calculation (manual or semi-automated) using Intune compliance + event log data
 - [ ] Deploy initial JSM dashboard for service desk team
 
-#### Policy Deliverables — Phase 1
+#### Policy Deliverables - Phase 1
 
-- [ ] **Create**: AI and Automation Governance Policy (v1.0 — automation scope limited to detection only at this stage)
-- [ ] **Create**: XLA Policy and Measurement Guide (v1.0 — define metrics; begin baseline data collection)
-- [ ] **Update**: Incident Management Procedure — add reference to IASD operational modes and health score triggers
-- [ ] **Update**: Service Desk Operating Procedure — add proactive notification section (even though not yet active)
+- [ ] **Create**: AI and Automation Governance Policy (v1.0 - automation scope limited to detection only at this stage)
+- [ ] **Create**: XLA Policy and Measurement Guide (v1.0 - define metrics; begin baseline data collection)
+- [ ] **Update**: Incident Management Procedure - add reference to IASD operational modes and health score triggers
+- [ ] **Update**: Service Desk Operating Procedure - add proactive notification section (even though not yet active)
 - [ ] **Create**: Initial Standard Change Register template (blank; populated in Phase 3)
 - [ ] **Establish**: IASD CAB Sub-Committee: terms of reference, meeting cadence (monthly), membership (IT Ops Lead, Service Desk Manager, Security representative, one end-user representative)
 
@@ -475,7 +475,7 @@ Phase 4: Optimisation and AI Integration (Months 13–24)
 > ✅ XLA baseline established (first 30 days of XLA survey data collected)  
 > ✅ IASD CAB Sub-Committee first meeting held
 
-### 5.4 Phase 2 — Proactive Engagement *(Months 4–6)*
+### 5.4 Phase 2 - Proactive Engagement *(Months 4–6)*
 
 **Objective:** Activate proactive monitoring and notifications. Deploy the PLA, initial PHMS data collection, and MIT service health correlation. Transition manual health scoring to automated.
 
@@ -487,17 +487,17 @@ Phase 4: Optimisation and AI Integration (Months 13–24)
 - [ ] Activate **M365 service health auto-correlation** in JSM (Rule 2 from Jira/Intune chapter)
 - [ ] Automate endpoint health score calculation from Intune + WEC event data
 - [ ] Activate proactive user notifications for health scores < 70
-- [ ] Deploy WEC event processor; activate JSM incident creation for USB errors, app crash loops, spooler crashes (detection only — no automated remediation yet)
+- [ ] Deploy WEC event processor; activate JSM incident creation for USB errors, app crash loops, spooler crashes (detection only - no automated remediation yet)
 - [ ] Publish self-service diagnostic guides in JSM knowledge base for top-10 issue types
 
-#### Policy Deliverables — Phase 2
+#### Policy Deliverables - Phase 2
 
-- [ ] **Update**: Problem Management Procedure — add automated problem-raising section; reference PLA and MIT recurrence thresholds
-- [ ] **Update**: Monitoring and Event Management Policy — add SNMP printer monitoring, WEC scope, and WEF subscription details
-- [ ] **Update**: Acceptable Use Policy — add telemetry monitoring consent clause; inform users that endpoint health scoring is active
-- [ ] **Create**: Proactive Notification Policy — defines when automated outreach is sent, what it contains, and user opt-out rights
-- [ ] **Update**: AI/Automation Governance Policy — expand to cover automated notification scope (Stage 2 of maturity ladder)
-- [ ] **Update**: XLA Policy — add Proactive Resolution Rate metric now that proactive detection is active
+- [ ] **Update**: Problem Management Procedure - add automated problem-raising section; reference PLA and MIT recurrence thresholds
+- [ ] **Update**: Monitoring and Event Management Policy - add SNMP printer monitoring, WEC scope, and WEF subscription details
+- [ ] **Update**: Acceptable Use Policy - add telemetry monitoring consent clause; inform users that endpoint health scoring is active
+- [ ] **Create**: Proactive Notification Policy - defines when automated outreach is sent, what it contains, and user opt-out rights
+- [ ] **Update**: AI/Automation Governance Policy - expand to cover automated notification scope (Stage 2 of maturity ladder)
+- [ ] **Update**: XLA Policy - add Proactive Resolution Rate metric now that proactive detection is active
 
 #### Governance Gate: Phase 2 → Phase 3
 
@@ -509,7 +509,7 @@ Phase 4: Optimisation and AI Integration (Months 13–24)
 > ✅ No unresolved complaints from users about unexpected automated notifications  
 > ✅ CAB Sub-Committee Month 4 review: approve proceeding to automated remediation
 
-### 5.5 Phase 3 — Automated Remediation *(Months 7–12)*
+### 5.5 Phase 3 - Automated Remediation *(Months 7–12)*
 
 **Objective:** Deploy automated remediation scripts. Classify approved scripts as Standard Changes. Begin measuring Automated Remediation Rate as an XLA metric. Expand to POS monitoring where applicable.
 
@@ -524,14 +524,14 @@ Phase 4: Optimisation and AI Integration (Months 13–24)
 - [ ] Implement JSM Rule 5 (auto-close M365 incidents when MS incident resolves)
 - [ ] Activate post-resolution XLA surveys for all automated ticket closures
 
-#### Policy Deliverables — Phase 3
+#### Policy Deliverables - Phase 3
 
-- [ ] **Populate**: Standard Change Register (SC-IASD-001 through SC-IASD-010+) for all deployed automated actions — each with test evidence, rollback procedure, and CAB approval date
-- [ ] **Create**: Automated Remediation Testing and Deployment Standard — defines test environment requirements, test case structure, rollback test requirement, and promotion criteria
-- [ ] **Update**: Change Enablement Policy — rename from Change Control if required; add standard change fast-track path for IASD-classified automations; add 6C checklist requirement for all Normal Changes involving automation
-- [ ] **Update**: AI/Automation Governance Policy — expand to cover Stage 3 (automated remediation); add scope boundaries for each deployed script
-- [ ] **Update**: Incident Management Procedure — document the automated resolution path (event → Intune remediation → auto-close → XLA survey); distinguish from manual path
-- [ ] **Update**: Service Request Management Policy — document that toner and consumables requests may be auto-generated by SNMP events; define fulfilment workflow
+- [ ] **Populate**: Standard Change Register (SC-IASD-001 through SC-IASD-010+) for all deployed automated actions - each with test evidence, rollback procedure, and CAB approval date
+- [ ] **Create**: Automated Remediation Testing and Deployment Standard - defines test environment requirements, test case structure, rollback test requirement, and promotion criteria
+- [ ] **Update**: Change Enablement Policy - rename from Change Control if required; add standard change fast-track path for IASD-classified automations; add 6C checklist requirement for all Normal Changes involving automation
+- [ ] **Update**: AI/Automation Governance Policy - expand to cover Stage 3 (automated remediation); add scope boundaries for each deployed script
+- [ ] **Update**: Incident Management Procedure - document the automated resolution path (event → Intune remediation → auto-close → XLA survey); distinguish from manual path
+- [ ] **Update**: Service Request Management Policy - document that toner and consumables requests may be auto-generated by SNMP events; define fulfilment workflow
 
 #### Governance Gate: Phase 3 → Phase 4
 
@@ -543,7 +543,7 @@ Phase 4: Optimisation and AI Integration (Months 13–24)
 > ✅ CAB Sub-Committee Month 10 review: approve proceeding to AI-assisted triage  
 > ✅ Change Enablement Policy updated, approved by IT Management, and circulated
 
-### 5.6 Phase 4 — Optimisation and AI Integration *(Months 13–24)*
+### 5.6 Phase 4 - Optimisation and AI Integration *(Months 13–24)*
 
 **Objective:** Introduce AI-assisted triage. Implement predictive hardware replacement. Mature XLA framework. Pursue ITIL v5 Practice Manager certification. Close remaining policy gaps.
 
@@ -557,15 +557,15 @@ Phase 4: Optimisation and AI Integration (Months 13–24)
 - [ ] Integrate JSM reports with Power BI or Confluence for management XLA dashboard
 - [ ] Begin ITIL v5 Practice Manager (MSF) certification pathway for senior analysts
 
-#### Policy Deliverables — Phase 4
+#### Policy Deliverables - Phase 4
 
 - [ ] **Close all remaining gap analysis items** identified in Phase 0
-- [ ] **Update**: AI/Automation Governance Policy — expand to cover AI-assisted triage; add accuracy validation requirement; add demographic/device-class bias review
-- [ ] **Create**: PSLM Feedback Procedure — documents how Support stage data (incident trends, health scores, XLA outcomes) is formally submitted to IT leadership for service and procurement decisions (Discover stage gate)
-- [ ] **Update**: Problem Management Procedure — add predictive problem pattern detection section (ML-identified patterns)
-- [ ] **Create**: IT Service Desk AI Model Governance Register — tracks all ML models in use, training data sources, validation results, and review schedule (ITIL v5 6C Competence dimension)
-- [ ] **Update**: Asset and CMDB Policy — add lifecycle stage tagging aligned to PSLM; add health score threshold for end-of-life flag
-- [ ] **Create**: Sustainability Principles in IT Procurement — hardware procurement checklist referencing ITIL v5 sustainability pillar; includes energy efficiency, repairability, and disposal considerations
+- [ ] **Update**: AI/Automation Governance Policy - expand to cover AI-assisted triage; add accuracy validation requirement; add demographic/device-class bias review
+- [ ] **Create**: PSLM Feedback Procedure - documents how Support stage data (incident trends, health scores, XLA outcomes) is formally submitted to IT leadership for service and procurement decisions (Discover stage gate)
+- [ ] **Update**: Problem Management Procedure - add predictive problem pattern detection section (ML-identified patterns)
+- [ ] **Create**: IT Service Desk AI Model Governance Register - tracks all ML models in use, training data sources, validation results, and review schedule (ITIL v5 6C Competence dimension)
+- [ ] **Update**: Asset and CMDB Policy - add lifecycle stage tagging aligned to PSLM; add health score threshold for end-of-life flag
+- [ ] **Create**: Sustainability Principles in IT Procurement - hardware procurement checklist referencing ITIL v5 sustainability pillar; includes energy efficiency, repairability, and disposal considerations
 
 ---
 
@@ -601,11 +601,11 @@ Each phase transition should be accompanied by structured communications:
 
 Beyond the technical XLA metrics, track the following adoption indicators:
 
-- **Self-service article usage rate** — are users reading knowledge base articles before raising tickets?
-- **Ticket reopen rate** — declining reopen rate indicates users trust automated resolutions
-- **Technician survey score** — quarterly survey asking technicians whether the IASD model helps or hinders their work
-- **CAB Sub-Committee engagement** — are members attending and contributing, or is governance becoming a rubber stamp?
-- **Policy acknowledgment rate** — percentage of staff who have acknowledged updated AUP and telemetry policies
+- **Self-service article usage rate** - are users reading knowledge base articles before raising tickets?
+- **Ticket reopen rate** - declining reopen rate indicates users trust automated resolutions
+- **Technician survey score** - quarterly survey asking technicians whether the IASD model helps or hinders their work
+- **CAB Sub-Committee engagement** - are members attending and contributing, or is governance becoming a rubber stamp?
+- **Policy acknowledgment rate** - percentage of staff who have acknowledged updated AUP and telemetry policies
 
 ---
 
@@ -623,10 +623,10 @@ ITIL v5 introduced three **Practice Manager modules** as formal certification pa
 
 For an IASD implementation team, the recommended certification path is:
 
-1. **All service desk team members**: ITIL Foundation v5 — establishes common language and framework understanding
-2. **Service desk team leads and ITSM managers**: ITIL Practice Manager MSF — deep dive into the five MSF practices directly governing IASD operations
-3. **Change managers and engineers responsible for automation deployment**: ITIL Practice Manager PIC — covers Change Enablement and Configuration Management relevant to the standard change register
-4. **IT management and service owners**: ITIL Practice Manager SVX — covers XLA and service level management at the governance level
+1. **All service desk team members**: ITIL Foundation v5 - establishes common language and framework understanding
+2. **Service desk team leads and ITSM managers**: ITIL Practice Manager MSF - deep dive into the five MSF practices directly governing IASD operations
+3. **Change managers and engineers responsible for automation deployment**: ITIL Practice Manager PIC - covers Change Enablement and Configuration Management relevant to the standard change register
+4. **IT management and service owners**: ITIL Practice Manager SVX - covers XLA and service level management at the governance level
 
 ### 7.2 Certification Timing Within Implementation Phases
 
@@ -706,11 +706,11 @@ Copy and complete this worksheet during Phase 0 assessment.
 **Meeting Cadence:** Monthly (can be combined with existing CAB if agenda time is protected)
 
 **Standing Agenda Items:**
-1. New automation proposals — review against 6C checklist; approve/reject standard change classification
-2. Audit log review — sample of automated actions from previous month; any unintended outcomes?
-3. XLA data review — are automated resolutions improving user experience metrics?
-4. AI model performance (where applicable) — accuracy, false positive rate, bias review
-5. Policy actions — review outstanding policy updates; sign off on completed updates
+1. New automation proposals - review against 6C checklist; approve/reject standard change classification
+2. Audit log review - sample of automated actions from previous month; any unintended outcomes?
+3. XLA data review - are automated resolutions improving user experience metrics?
+4. AI model performance (where applicable) - accuracy, false positive rate, bias review
+5. Policy actions - review outstanding policy updates; sign off on completed updates
 6. Any other business
 
 **Decision Authority:**
@@ -727,8 +727,8 @@ Copy and complete this worksheet during Phase 0 assessment.
 2. **PeopleCert** (2026). *ITIL Practice Manager: Monitor, Support and Fulfil (MSF) Module.*
 3. **PeopleCert** (2026). *ITIL Practice Manager: Plan, Implement and Control (PIC) Module.*
 4. **Atlassian** (2026). *Jira Service Management: ITSM Best Practices.* <https://www.atlassian.com/itsm>
-5. **Microsoft** (2026). *Microsoft Intune documentation — Proactive Remediations.* <https://learn.microsoft.com/mem/intune>
+5. **Microsoft** (2026). *Microsoft Intune documentation - Proactive Remediations.* <https://learn.microsoft.com/mem/intune>
 6. **Microsoft** (2026). *Microsoft Graph API reference.* <https://learn.microsoft.com/graph>
 7. **AXELOS** (2019). *ITIL 4 Foundation.* TSO (The Stationery Office). *(ITIL 4 reference for comparative gap analysis)*
-8. **ISO/IEC 20000-1:2018** — *Information technology — Service management — Part 1: Service management system requirements.* *(Complementary international standard)*
+8. **ISO/IEC 20000-1:2018** - *Information technology - Service management - Part 1: Service management system requirements.* *(Complementary international standard)*
 9. **Incident.io** (2026). *Everything You Need to Know About ITIL 5, AI and Incident Management.* <https://incident.io/blog>
