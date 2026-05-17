@@ -17,13 +17,13 @@
 
 The main research paper established the theoretical and operational framework for an **Integrated Active Service Desk (IASD)** under ITIL v5. This supplementary chapter moves from framework to implementation, focusing on the three highest-volume recurring issue categories that benefit most from custom software tooling:
 
-1. 🖨️ **Printer and print-service faults** — the single largest category of *"device is broken"* contacts in most endpoint-heavy environments
-2. 🛒 **Point-of-Sale (POS) hardware issues** — mission-critical in retail and hospitality contexts, where downtime directly translates to lost revenue
-3. ☁️ **Microsoft 365 user issues** — the most diverse category, spanning authentication, licensing, Teams, Exchange, SharePoint, and OneDrive
+1. 🖨️ **Printer and print-service faults** - the single largest category of *"device is broken"* contacts in most endpoint-heavy environments
+2. 🛒 **Point-of-Sale (POS) hardware issues** - mission-critical in retail and hospitality contexts, where downtime directly translates to lost revenue
+3. ☁️ **Microsoft 365 user issues** - the most diverse category, spanning authentication, licensing, Teams, Exchange, SharePoint, and OneDrive
 
 For each category, this chapter covers: native log sources, a purpose-built custom software architecture using accessible technologies (PowerShell, Python, and open-source ITSM platforms), practical code patterns, recurrence detection logic, and integration touchpoints with ITIL v5's **Monitor, Support and Fulfil (MSF)** practices.
 
-> 💡 All custom solutions described here are designed to **complement — not replace** — a primary ITSM platform such as GLPI, iTop, ManageEngine ServiceDesk Plus, or Freshservice. They act as specialised log ingestors, pattern detectors, and ticket generators that feed structured, enriched data into whichever ITSM platform the organisation already runs.
+> 💡 All custom solutions described here are designed to **complement - not replace** - a primary ITSM platform such as GLPI, iTop, ManageEngine ServiceDesk Plus, or Freshservice. They act as specialised log ingestors, pattern detectors, and ticket generators that feed structured, enriched data into whichever ITSM platform the organisation already runs.
 
 ---
 
@@ -173,9 +173,9 @@ Standard SNMP OIDs for printer status (RFC 3805 / Printer MIB):
 Point-of-Sale environments introduce constraints not present in standard desktop support:
 
 - **Downtime has an immediate, measurable revenue impact** (lost sales, queue abandonment)
-- **Hardware is purpose-built and often proprietary** — receipt printers, barcode scanners, customer displays, card payment terminals (PIN pads), cash drawers, and POS terminals running specialised OS images
+- **Hardware is purpose-built and often proprietary** - receipt printers, barcode scanners, customer displays, card payment terminals (PIN pads), cash drawers, and POS terminals running specialised OS images
 - **PCI DSS requirements apply** to any system touching card payment data, constraining what monitoring agents can be installed and what data can be logged
-- **Retail and hospitality environments mean hardware is physically stressed** — heat, humidity, dust, spills, and heavy usage cycles
+- **Retail and hospitality environments mean hardware is physically stressed** - heat, humidity, dust, spills, and heavy usage cycles
 
 > 🎯 The goal of a **POS Hardware Monitoring System (PHMS)** is to detect hardware degradation and recurring fault patterns *before* they cause a register outage, and to provide technicians with structured fault history rather than anecdotal user reports.
 
@@ -222,7 +222,7 @@ printer.StatusUpdateEvent += (s, e) => {
 | Status Code | Meaning | Recommended Action |
 | --- | --- | --- |
 | `11` *(SUE_COVER_OPEN)* | Printer cover open | Alert terminal operator; if sustained > 2 min, create incident |
-| `21` *(SUE_IDLE)* | Printer idle and ready | No action — reset fault flag if previously set |
+| `21` *(SUE_IDLE)* | Printer idle and ready | No action - reset fault flag if previously set |
 | `41` *(SUE_REC_EMPTY)* | Receipt paper empty | Auto-create consumables request; alert store supervisor |
 | `51` *(SUE_REC_NEAREMPTY)* | Paper near-empty | Proactive alert to stock paper; schedule before queue forms |
 | `107` *(SUE_POWER_OFF)* | Printer offline / power off | **P2 incident** if not resolved within 5 minutes |
@@ -276,7 +276,7 @@ Any monitoring solution touching POS systems must be assessed against PCI DSS re
 
 > 🔒 **Do not log or transmit raw cardholder data** (Primary Account Numbers) under any circumstances.
 
-- Payment terminal logs (PIN pad, acquiring connection) are generally **outside scope** for IT service desk monitoring — access is typically restricted to the acquiring bank or payment gateway provider
+- Payment terminal logs (PIN pad, acquiring connection) are generally **outside scope** for IT service desk monitoring - access is typically restricted to the acquiring bank or payment gateway provider
 - Ensure monitoring agents are included in your **annual penetration test** scope
 - **Network segmentation** between POS monitoring traffic and general IT monitoring infrastructure should be maintained
 
@@ -296,12 +296,12 @@ Unlike standard service desk environments, POS downtime affects **store operatio
 
 Microsoft 365 generates the most diverse category of service desk contacts. Issues span identity and authentication (Entra ID / MFA), email (Exchange Online), collaboration (Teams, SharePoint, OneDrive), licensing, and increasingly AI-powered services (Copilot). Recurring M365 issues that are amenable to custom tracking and automation include:
 
-- **MFA prompt storms** — users repeatedly prompted for MFA due to Conditional Access misconfigurations or token cache issues
-- **Shared mailbox permission drift** — users losing access to shared mailboxes after licence or group membership changes
-- **Teams meeting quality degradation** — recurring poor-quality meeting experience for specific users or locations
-- **OneDrive sync client errors** — OneDrive repeatedly entering a *"paused"* or *"needs attention"* state
-- **Licence assignment failures** — users losing access to specific M365 apps due to group-based licence conflicts
-- **Exchange Online message delivery failures** — recurring NDRs or delayed delivery for specific users or domains
+- **MFA prompt storms** - users repeatedly prompted for MFA due to Conditional Access misconfigurations or token cache issues
+- **Shared mailbox permission drift** - users losing access to shared mailboxes after licence or group membership changes
+- **Teams meeting quality degradation** - recurring poor-quality meeting experience for specific users or locations
+- **OneDrive sync client errors** - OneDrive repeatedly entering a *"paused"* or *"needs attention"* state
+- **Licence assignment failures** - users losing access to specific M365 apps due to group-based licence conflicts
+- **Exchange Online message delivery failures** - recurring NDRs or delayed delivery for specific users or domains
 
 > A custom **M365 Issue Tracker (MIT)** uses the **Microsoft Graph API** as its primary data source, supplemented by Windows event logs on endpoints and the M365 Service Health API.
 
@@ -313,12 +313,12 @@ The Microsoft Graph API provides programmatic access to virtually all M365 servi
 | --- | --- |
 | `/reports/getTeamsUserActivityUserDetail` | Detect users with zero Teams activity (possible sign-in failure) |
 | `/reports/getEmailActivityUserDetail` | Identify users with mail delivery anomalies |
-| `/users/{id}/authentication/signInActivity` | Last sign-in date — detect orphaned or locked accounts |
-| `/users/{id}/licenseDetails` | Current licence assignments — detect missing licences after group changes |
+| `/users/{id}/authentication/signInActivity` | Last sign-in date - detect orphaned or locked accounts |
+| `/users/{id}/licenseDetails` | Current licence assignments - detect missing licences after group changes |
 | `/identity/conditionalAccessPolicies` | Audit CA policy changes that may explain MFA prompt storms |
 | `/communications/callRecords` | Teams call quality: jitter, packet loss, latency per user per session |
-| `/admin/serviceAnnouncement/healthOverviews` | M365 Service Health — check if issue is a known Microsoft incident |
-| `/admin/serviceAnnouncement/issues` | Active service incidents — auto-correlate user complaints with MS incidents |
+| `/admin/serviceAnnouncement/healthOverviews` | M365 Service Health - check if issue is a known Microsoft incident |
+| `/admin/serviceAnnouncement/issues` | Active service incidents - auto-correlate user complaints with MS incidents |
 
 > ⚠️ **Important note on Graph API stability:** the Graph PowerShell SDK has experienced significant quality issues through 2025, with the SDK team working through a substantial bug backlog. For production automation, **pin SDK version explicitly** in your automation environment and test new releases in a staging tenant before promoting to production.
 
@@ -335,7 +335,7 @@ The MIT is a Python-based service that polls the Graph API on scheduled interval
 | **Self-Heal Actions** | Azure Automation runbooks triggered by MIT for safe auto-remediation *(see §3.5)* |
 | **M365 Health Dashboard** | Power BI or Grafana dashboard: per-service health, top-affected users, call quality heatmap |
 
-#### 3.3.1 Authentication Pattern — MSAL for Graph Access
+#### 3.3.1 Authentication Pattern - MSAL for Graph Access
 
 The MIT authenticates to the Graph API using a registered Entra ID application with **application permissions** (not delegated), allowing it to run without a signed-in user:
 
@@ -366,9 +366,9 @@ def graph_get(endpoint):
                         headers=headers).json()
 ```
 
-#### 3.3.2 Recurring Issue Detection — MFA Prompt Storm Example
+#### 3.3.2 Recurring Issue Detection - MFA Prompt Storm Example
 
-MFA prompt storms — where a user is asked to authenticate repeatedly — generate identifiable patterns in Entra ID sign-in logs (accessible via Graph). The following pattern identifies affected users:
+MFA prompt storms - where a user is asked to authenticate repeatedly - generate identifiable patterns in Entra ID sign-in logs (accessible via Graph). The following pattern identifies affected users:
 
 ```python
 # mfa_storm_detector.py
@@ -426,7 +426,7 @@ This single automation reduces unnecessary technician investigation and improves
 
 ### 3.5 Safe Auto-Remediation Actions for M365 Issues
 
-The following M365 remediation actions are candidates for classification as **Standard Changes** under ITIL v5's Change Enablement practice — low-risk, well-understood, and reversible:
+The following M365 remediation actions are candidates for classification as **Standard Changes** under ITIL v5's Change Enablement practice - low-risk, well-understood, and reversible:
 
 | Issue Type | Automated Action | Trigger Condition |
 | --- | --- | --- |
@@ -441,13 +441,13 @@ The following M365 remediation actions are candidates for classification as **St
 
 The MIT dashboard should surface the following metrics for the service desk team and management:
 
-- **Top 10 users by M365 incident frequency** *(last 30 days)* — identify users needing targeted support or device refresh
-- **Top 5 recurring issue types by volume** — feed directly into Problem Management records
-- **Microsoft Service Health timeline** — overlay MS incidents with ticket volume spikes to validate correlation
-- **Teams call quality heatmap by office location** — identify network or infrastructure issues causing meeting degradation
-- **Licence compliance rate** — percentage of users with correct licence assignments vs. entitlements
-- **MFA registration completeness** — percentage of users with SSPR and MFA methods configured (reduces auth-related tickets)
-- **Average time from Graph event detection to ticket creation** — measures MIT responsiveness
+- **Top 10 users by M365 incident frequency** *(last 30 days)* - identify users needing targeted support or device refresh
+- **Top 5 recurring issue types by volume** - feed directly into Problem Management records
+- **Microsoft Service Health timeline** - overlay MS incidents with ticket volume spikes to validate correlation
+- **Teams call quality heatmap by office location** - identify network or infrastructure issues causing meeting degradation
+- **Licence compliance rate** - percentage of users with correct licence assignments vs. entitlements
+- **MFA registration completeness** - percentage of users with SSPR and MFA methods configured (reduces auth-related tickets)
+- **Average time from Graph event detection to ticket creation** - measures MIT responsiveness
 
 ---
 
@@ -464,7 +464,7 @@ The three custom tools described above (PLA, PHMS, and MIT) all depend on a cent
 | **osTicket** | ✅ REST API | Basic ITIL | ❌ Plugin only | Ticket-only; good for simple environments |
 | **Faveo Helpdesk** | ✅ REST API | ITIL 4 practices | ✅ Basic asset | SMB with multi-channel ticket needs |
 
-> 🏆 For organisations implementing all three custom tools described in this chapter, **GLPI or iTop are recommended**. Both provide native CMDB integration — enabling the custom tools to link printers, POS terminals, and M365 user accounts to Configuration Items (CIs) — and both expose stable REST APIs that the Python and .NET agents can call directly.
+> 🏆 For organisations implementing all three custom tools described in this chapter, **GLPI or iTop are recommended**. Both provide native CMDB integration - enabling the custom tools to link printers, POS terminals, and M365 user accounts to Configuration Items (CIs) - and both expose stable REST APIs that the Python and .NET agents can call directly.
 
 ### 4.2 Unified API Integration Pattern
 
@@ -558,7 +558,7 @@ The following describes how the three custom tools and the central ITSM platform
 
 ### 5.1 Consolidated Implementation Checklist
 
-#### 📅 Phase 1 — Foundation *(Weeks 1–4)*
+#### 📅 Phase 1 - Foundation *(Weeks 1–4)*
 
 - [ ] Enable `PrintService/Operational` logs via GPO on all print servers and endpoints
 - [ ] Install SNMP monitoring for all network printers; document OIDs per printer model
@@ -566,7 +566,7 @@ The following describes how the three custom tools and the central ITSM platform
 - [ ] Select and deploy central ITSM platform (GLPI or iTop recommended)
 - [ ] Define ITIL v5 ticket categories: *Printer*, *POS Hardware*, *M365 – Authentication*, *M365 – Email*, *M365 – Teams*, *M365 – Licensing*
 
-#### 📅 Phase 2 — Custom Tool Deployment *(Weeks 5–12)*
+#### 📅 Phase 2 - Custom Tool Deployment *(Weeks 5–12)*
 
 - [ ] Deploy Printer Log Aggregator on print servers; validate event ingestion
 - [ ] Deploy OPOS status monitor .NET service on POS terminals (staging site first)
@@ -574,7 +574,7 @@ The following describes how the three custom tools and the central ITSM platform
 - [ ] Validate ITSM API integration for all three tools: test ticket creation end-to-end
 - [ ] Enable M365 Service Health auto-correlation in MIT
 
-#### 📅 Phase 3 — Recurrence and Automation *(Weeks 13–24)*
+#### 📅 Phase 3 - Recurrence and Automation *(Weeks 13–24)*
 
 - [ ] Enable recurrence detection engines in PLA and PHMS
 - [ ] Classify printer spooler reset and SNMP-triggered consumables request as **Standard Changes**
@@ -598,9 +598,9 @@ Based on implementations of similar tooling in comparable environments, the foll
 
 | XLA Metric | Baseline (Month 0) | Target (Month 18) |
 | --- | :---: | :---: |
-| User Effort Score — Printers | `2.8 / 5.0` | **`> 4.2 / 5.0`** |
-| User Effort Score — POS Hardware | `2.5 / 5.0` | **`> 4.0 / 5.0`** |
-| User Effort Score — M365 | `3.1 / 5.0` | **`> 4.3 / 5.0`** |
+| User Effort Score - Printers | `2.8 / 5.0` | **`> 4.2 / 5.0`** |
+| User Effort Score - POS Hardware | `2.5 / 5.0` | **`> 4.0 / 5.0`** |
+| User Effort Score - M365 | `3.1 / 5.0` | **`> 4.3 / 5.0`** |
 | Proactive Resolution Rate | `4%` | **`> 35%`** |
 | Automated Remediation Rate | `2%` | **`> 45%`** |
 | Recurrence Rate (same issue 30d) | `28%` | **`< 8%`** |
@@ -608,11 +608,11 @@ Based on implementations of similar tooling in comparable environments, the foll
 
 ### 5.4 Closing Notes
 
-The three custom tools described in this chapter — the **Printer Log Aggregator**, **POS Hardware Monitoring System**, and **M365 Issue Tracker** — are not commercial products. They are purpose-built solutions assembled from standard components (Python, PowerShell, .NET, SNMP, and REST APIs) that any IT team with intermediate scripting capability can build and maintain.
+The three custom tools described in this chapter - the **Printer Log Aggregator**, **POS Hardware Monitoring System**, and **M365 Issue Tracker** - are not commercial products. They are purpose-built solutions assembled from standard components (Python, PowerShell, .NET, SNMP, and REST APIs) that any IT team with intermediate scripting capability can build and maintain.
 
-> Their value comes not from technical sophistication but from **structural discipline**: they convert noisy, fragmented log data into structured, actionable records that feed ITIL v5's MSF practice cluster. Every recurring printer fault that becomes a *problem record* rather than the fifteenth reactive ticket is a concrete demonstration of ITIL v5's Product and Service Lifecycle Model working as intended — **support data flowing back into improvement**.
+> Their value comes not from technical sophistication but from **structural discipline**: they convert noisy, fragmented log data into structured, actionable records that feed ITIL v5's MSF practice cluster. Every recurring printer fault that becomes a *problem record* rather than the fifteenth reactive ticket is a concrete demonstration of ITIL v5's Product and Service Lifecycle Model working as intended - **support data flowing back into improvement**.
 
-The supplementary implementation roadmap in §5.1 is designed to be achievable by a team of two to three people over six months, without specialist development skills. The goal is a service desk that **knows about printer failures, POS terminal degradation, and M365 authentication storms before the phone rings** — and increasingly, one that **fixes them before the user even notices**.
+The supplementary implementation roadmap in §5.1 is designed to be achievable by a team of two to three people over six months, without specialist development skills. The goal is a service desk that **knows about printer failures, POS terminal degradation, and M365 authentication storms before the phone rings** - and increasingly, one that **fixes them before the user even notices**.
 
 ---
 

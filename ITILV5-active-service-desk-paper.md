@@ -13,7 +13,7 @@
 
 ## Abstract
 
-> The release of **ITIL Version 5** (February–April 2026) marks the most significant evolution of IT service management guidance in seven years. Building on ITIL 4's value-driven foundation, ITIL v5 natively integrates **artificial intelligence governance**, a **Product and Service Lifecycle Model (PSLM)**, **Experience Level Agreements (XLAs)**, and mandatory sustainability principles. Critically for operations professionals, it elevates the **Monitor, Support and Fulfil (MSF)** practice cluster — encompassing Service Desk, Incident Management, Problem Management, Monitoring and Event Management, and Service Request Management — to a formal certification pathway.
+> The release of **ITIL Version 5** (February–April 2026) marks the most significant evolution of IT service management guidance in seven years. Building on ITIL 4's value-driven foundation, ITIL v5 natively integrates **artificial intelligence governance**, a **Product and Service Lifecycle Model (PSLM)**, **Experience Level Agreements (XLAs)**, and mandatory sustainability principles. Critically for operations professionals, it elevates the **Monitor, Support and Fulfil (MSF)** practice cluster - encompassing Service Desk, Incident Management, Problem Management, Monitoring and Event Management, and Service Request Management - to a formal certification pathway.
 >
 > This paper examines how the converging philosophies of ITIL v5 and modern customer success methodologies can be applied concretely to an active service desk responsible for hardware troubleshooting, peripheral management, and basic network connectivity. The paper proposes an **Integrated Active Service Desk (IASD)** model that uses proactive monitoring, AI-assisted triage, automated first-line remediation, and experience-centred measurement to shift the service desk from a reactive cost centre to a proactive value engine.
 
@@ -33,9 +33,9 @@ ITIL Version 5, launched in February 2026 with advanced modules rolling out thro
 
 This paper focuses on the physical-layer and near-physical-layer issues that constitute the majority of service desk workload in endpoint-heavy organisations:
 
-- **Hardware faults** — desktops, laptops, workstations, docking stations, monitors
-- **Peripheral issues** — keyboards, mice, headsets, webcams, printers, scanners, USB hubs
-- **Basic connectivity** — wired Ethernet, Wi-Fi association and authentication (WPA2/WPA3-Enterprise), VPN client failures, DNS resolution, DHCP lease problems
+- **Hardware faults** - desktops, laptops, workstations, docking stations, monitors
+- **Peripheral issues** - keyboards, mice, headsets, webcams, printers, scanners, USB hubs
+- **Basic connectivity** - wired Ethernet, Wi-Fi association and authentication (WPA2/WPA3-Enterprise), VPN client failures, DNS resolution, DHCP lease problems
 
 > Higher-layer application support and server infrastructure management are noted where they interact with the above but are not the primary focus.
 
@@ -88,10 +88,10 @@ ITIL v5 formally adopts **XLAs** as a standard element of service and product ma
 
 **XLA dimensions relevant to hardware/connectivity support:**
 
-- **Effort Score** — How much did the user have to do to get resolution?
-- **Disruption Index** — How much did the incident interrupt productive work?
-- **First-Contact Sentiment** — Was the user's experience of the interaction positive?
-- **Recurrence Rate** — Did the same issue return within 30 days?
+- **Effort Score** - How much did the user have to do to get resolution?
+- **Disruption Index** - How much did the incident interrupt productive work?
+- **First-Contact Sentiment** - Was the user's experience of the interaction positive?
+- **Recurrence Rate** - Did the same issue return within 30 days?
 
 ### 2.4 Native AI Governance: The 6C Model
 
@@ -106,7 +106,7 @@ ITIL v5 introduces a dedicated AI governance framework organised around six dime
 | **Communication** | Are users informed when automated vs. human resolution is occurring? |
 | **Continual Improvement** | Is AI performance reviewed against XLA outcomes regularly? |
 
-> The 6C model prevents organisations from deploying AI automation without accountability structures — a risk especially acute when automated scripts modify hardware configurations or network settings.
+> The 6C model prevents organisations from deploying AI automation without accountability structures - a risk especially acute when automated scripts modify hardware configurations or network settings.
 
 ---
 
@@ -114,14 +114,14 @@ ITIL v5 introduces a dedicated AI governance framework organised around six dime
 
 ### 3.1 What Customer Success Brings to ITSM
 
-Customer success (CS) as a discipline emerged in SaaS organisations to proactively ensure customers achieved value from products rather than waiting for churn signals. Its core techniques — health scoring, proactive outreach, lifecycle stage management, and outcome-based success metrics — are now being absorbed into enterprise ITSM, a trend ITIL v5 both acknowledges and accelerates through XLAs and the PSLM.
+Customer success (CS) as a discipline emerged in SaaS organisations to proactively ensure customers achieved value from products rather than waiting for churn signals. Its core techniques - health scoring, proactive outreach, lifecycle stage management, and outcome-based success metrics - are now being absorbed into enterprise ITSM, a trend ITIL v5 both acknowledges and accelerates through XLAs and the PSLM.
 
 **Key CS concepts that translate to service desk practice:**
 
-- **Health Scoring** — aggregate signal from multiple telemetry sources into a single endpoint health score, triggering proactive intervention before a user notices a problem
-- **Lifecycle Stage Awareness** — understanding whether an endpoint is newly provisioned, mid-lifecycle, or approaching end-of-life, and applying different support postures accordingly
-- **Proactive Outreach** — contacting users before they raise tickets, based on detected anomalies
-- **Success Plans** — defining what *good* looks like for a user's device and measuring against it
+- **Health Scoring** - aggregate signal from multiple telemetry sources into a single endpoint health score, triggering proactive intervention before a user notices a problem
+- **Lifecycle Stage Awareness** - understanding whether an endpoint is newly provisioned, mid-lifecycle, or approaching end-of-life, and applying different support postures accordingly
+- **Proactive Outreach** - contacting users before they raise tickets, based on detected anomalies
+- **Success Plans** - defining what *good* looks like for a user's device and measuring against it
 
 ### 3.2 Endpoint Health Scoring
 
@@ -140,10 +140,10 @@ Borrowing the CS health score model, an **endpoint health score** aggregates tel
 
 **Action thresholds:**
 
-- 🟢 **Score > 70** — silent monitoring
-- 🟡 **Score < 70** — triggers proactive outreach
-- 🟠 **Score < 50** — triggers an automated diagnostic workflow
-- 🔴 **Score < 30** — triggers a technician-dispatched hardware review
+- 🟢 **Score > 70** - silent monitoring
+- 🟡 **Score < 70** - triggers proactive outreach
+- 🟠 **Score < 50** - triggers an automated diagnostic workflow
+- 🔴 **Score < 30** - triggers a technician-dispatched hardware review
 
 ---
 
@@ -165,10 +165,10 @@ Lightweight agents (e.g., Microsoft Intune, Tanium, Nexthink, or open-source equ
 
 Monitoring should not rely solely on the endpoint. Network infrastructure provides a complementary perspective:
 
-- **WLAN Controllers** (Cisco WLC, Aruba Central, Ubiquiti UniFi) — per-client RSSI, SNR, retry rate, roaming events, and authentication failures
-- **RADIUS/NPS Logs** — 802.1X authentication attempts, EAP failures, certificate errors
-- **DHCP Server Logs** — lease exhaustion, rogue client detection, scope utilisation thresholds
-- **DNS Server Logs** — NXDOMAIN rates, resolution latency spikes
+- **WLAN Controllers** (Cisco WLC, Aruba Central, Ubiquiti UniFi) - per-client RSSI, SNR, retry rate, roaming events, and authentication failures
+- **RADIUS/NPS Logs** - 802.1X authentication attempts, EAP failures, certificate errors
+- **DHCP Server Logs** - lease exhaustion, rogue client detection, scope utilisation thresholds
+- **DNS Server Logs** - NXDOMAIN rates, resolution latency spikes
 
 #### Layer 3: Correlation and Alerting
 
@@ -185,15 +185,15 @@ Raw telemetry from agents and network infrastructure is ingested into a SIEM or 
 
 #### Layer 4: Intelligent Event Management
 
-ITIL v5's Monitoring and Event Management practice explicitly calls for *"systematically observing services and service components, recording, reporting, and responding to selected changes of state identified as events."* In practice this means **event noise suppression**, **correlation into incidents**, and — where governance permits — **automated response**.
+ITIL v5's Monitoring and Event Management practice explicitly calls for *"systematically observing services and service components, recording, reporting, and responding to selected changes of state identified as events."* In practice this means **event noise suppression**, **correlation into incidents**, and - where governance permits - **automated response**.
 
 ### 4.2 ITIL v5 Alignment: Event → Incident → Problem
 
 ITIL v5 preserves but refines the event-incident-problem relationship:
 
-- **Event** — a detected change of state (e.g., SMART status changes from `OK` to `Pre-fail`)
-- **Incident** — a disruption to normal service (e.g., drive degradation causing application crashes)
-- **Problem** — the underlying cause of one or more incidents (e.g., a specific SSD firmware version causing early failure)
+- **Event** - a detected change of state (e.g., SMART status changes from `OK` to `Pre-fail`)
+- **Incident** - a disruption to normal service (e.g., drive degradation causing application crashes)
+- **Problem** - the underlying cause of one or more incidents (e.g., a specific SSD firmware version causing early failure)
 
 The MSF practice cluster mandates that Monitoring and Event Management feeds directly into Incident Management, which in turn feeds Problem Management. In an active service desk, this means:
 
@@ -249,17 +249,17 @@ Chronic overheating is a leading cause of hardware failure. Automated thermal mo
 
 ### 5.3 Peripheral Troubleshooting Automation
 
-Peripheral issues — USB devices not recognised, audio not functioning, monitors flickering — are among the highest-volume service desk contacts and are amenable to scripted diagnosis:
+Peripheral issues - USB devices not recognised, audio not functioning, monitors flickering - are among the highest-volume service desk contacts and are amenable to scripted diagnosis:
 
-> **Common Peripheral Automation — USB device not recognised**
+> **Common Peripheral Automation - USB device not recognised**
 > 1. Query Event Log for USB error codes
 > 2. Run automated driver reinstall via `DevCon` or `PnPUtil`
 > 3. If unresolved, push self-service diagnostic URL
 > 4. If user confirms failure, raise fulfilment request for replacement peripheral
 
-- **Printer issues** — automated port re-binding, print spooler restart, driver version verification against approved list
-- **Webcam / headset** — automated device manager scan, audio endpoint reset via Windows Core Audio API
-- **Monitor** — EDID data capture to confirm display recognised; automated resolution reset to native
+- **Printer issues** - automated port re-binding, print spooler restart, driver version verification against approved list
+- **Webcam / headset** - automated device manager scan, audio endpoint reset via Windows Core Audio API
+- **Monitor** - EDID data capture to confirm display recognised; automated resolution reset to native
 
 ### 5.4 Connectivity Troubleshooting Automation
 
@@ -267,13 +267,13 @@ Peripheral issues — USB devices not recognised, audio not functioning, monitor
 
 Wireless connectivity is the most reported category of *"I can't connect"* incidents. Automated Wi-Fi diagnosis should follow a structured test path:
 
-1. **Physical layer** — Confirm radio enabled (not hard/soft blocked), check RSSI via `netsh wlan show interfaces`
-2. **Association** — Verify SSID association; if failed, trigger profile deletion and rejoin
-3. **Authentication** — Check EAP status; if certificate expired, trigger MDM certificate re-enrolment
-4. **IP layer** — Confirm DHCP lease; if `169.254.x.x` (APIPA), release/renew, escalate to network team if DHCP scope exhausted
-5. **DNS** — Run `nslookup` against internal resolver; if failing, flush resolver cache, test alternative DNS
-6. **Gateway** — Ping default gateway; if failing, raise network incident, auto-notify NOC
-7. **Internet** — Ping external (`8.8.8.8`); if internal OK but external failing, suspect firewall/proxy → auto-raise Priority 2 for network team
+1. **Physical layer** - Confirm radio enabled (not hard/soft blocked), check RSSI via `netsh wlan show interfaces`
+2. **Association** - Verify SSID association; if failed, trigger profile deletion and rejoin
+3. **Authentication** - Check EAP status; if certificate expired, trigger MDM certificate re-enrolment
+4. **IP layer** - Confirm DHCP lease; if `169.254.x.x` (APIPA), release/renew, escalate to network team if DHCP scope exhausted
+5. **DNS** - Run `nslookup` against internal resolver; if failing, flush resolver cache, test alternative DNS
+6. **Gateway** - Ping default gateway; if failing, raise network incident, auto-notify NOC
+7. **Internet** - Ping external (`8.8.8.8`); if internal OK but external failing, suspect firewall/proxy → auto-raise Priority 2 for network team
 
 #### 5.4.2 VPN Client Automation
 
@@ -339,28 +339,28 @@ The IASD model tracks the following XLA dimensions for hardware, peripheral, and
 
 Every automated remediation action on a user's device constitutes a **change**. ITIL v5's Change Enablement practice (in the PIC module) and its 6C AI governance model together require the following controls:
 
-- **Standard Change Classification** — automated scripts that have been tested, approved, and documented must be classified as standard changes, removing the need for individual approval and enabling automated execution
-- **Audit Trail** — every automated action must be logged with timestamp, action taken, user device, outcome, and the monitoring event that triggered it
-- **Rollback Capability** — all standard changes must have a documented rollback procedure (e.g., driver rollback via `DISM`)
-- **Human Override** — users and technicians must be able to suppress automated actions on specific devices
-- **Scope Boundaries** — automation must never exceed the scope of the standard change record; any action outside scope must halt and escalate
+- **Standard Change Classification** - automated scripts that have been tested, approved, and documented must be classified as standard changes, removing the need for individual approval and enabling automated execution
+- **Audit Trail** - every automated action must be logged with timestamp, action taken, user device, outcome, and the monitoring event that triggered it
+- **Rollback Capability** - all standard changes must have a documented rollback procedure (e.g., driver rollback via `DISM`)
+- **Human Override** - users and technicians must be able to suppress automated actions on specific devices
+- **Scope Boundaries** - automation must never exceed the scope of the standard change record; any action outside scope must halt and escalate
 
 ### 7.2 Ethical and Compliance Considerations
 
 Automated access to user endpoints raises privacy and compliance questions that ITIL v5's *Compliance* and *Culture* dimensions directly address:
 
-- **Informed Consent** — users should be aware that endpoint agents collect telemetry and may initiate automated actions; this should be stated in the acceptable use policy
-- **Data Minimisation** — collect only the telemetry required to calculate health scores and diagnose issues; do not retain raw logs beyond **90 days** unless required for problem management
-- **Regulated Environments** — in healthcare, financial services, or government, automated changes may require additional approval workflows under frameworks such as **HIPAA**, **SOX**, or **NZISM**
+- **Informed Consent** - users should be aware that endpoint agents collect telemetry and may initiate automated actions; this should be stated in the acceptable use policy
+- **Data Minimisation** - collect only the telemetry required to calculate health scores and diagnose issues; do not retain raw logs beyond **90 days** unless required for problem management
+- **Regulated Environments** - in healthcare, financial services, or government, automated changes may require additional approval workflows under frameworks such as **HIPAA**, **SOX**, or **NZISM**
 
 ### 7.3 Change Advisory Board Integration
 
 The IASD model recommends a monthly review of automated remediation scripts by a lightweight CAB sub-committee. The agenda should cover:
 
-1. **New scripts** proposed for standard change classification — review test results and rollback procedures
-2. **Audit log review** of automated actions for the previous month — identify any unintended outcomes
-3. **XLA data review** — are automated resolutions improving user experience metrics?
-4. **AI model performance review** (where ML-based triage is in use) — accuracy, false positive rate, and any demographic or device-class bias
+1. **New scripts** proposed for standard change classification - review test results and rollback procedures
+2. **Audit log review** of automated actions for the previous month - identify any unintended outcomes
+3. **XLA data review** - are automated resolutions improving user experience metrics?
+4. **AI model performance review** (where ML-based triage is in use) - accuracy, false positive rate, and any demographic or device-class bias
 
 ---
 
@@ -368,7 +368,7 @@ The IASD model recommends a monthly review of automated remediation scripts by a
 
 The following phased roadmap is designed for an organisation with an existing ITSM platform and basic endpoint management tooling. Timelines are indicative and should be adjusted based on organisational size and maturity.
 
-### 📅 Phase 1 — Foundation *(Months 1–3)*
+### 📅 Phase 1 - Foundation *(Months 1–3)*
 
 - Audit current telemetry collection capabilities across endpoints, network, and ITSM platform
 - Deploy or verify endpoint agent coverage *(target: **95%** of managed devices)*
@@ -377,7 +377,7 @@ The following phased roadmap is designed for an organisation with an existing IT
 - Establish baseline SLA and initial XLA metrics
 - Train service desk staff on ITIL v5 MSF concepts and health score interpretation
 
-### 📅 Phase 2 — Proactive Engagement *(Months 4–6)*
+### 📅 Phase 2 - Proactive Engagement *(Months 4–6)*
 
 - Activate automated proactive notifications for health scores below 70
 - Publish and link self-service diagnostic guides for top-10 issue types
@@ -385,7 +385,7 @@ The following phased roadmap is designed for an organisation with an existing IT
 - Begin recording proactive resolution rate as an XLA metric
 - Run pilot of automated DNS flush and NIC reset scripts for Tier 1 approval as standard changes
 
-### 📅 Phase 3 — Automated Remediation *(Months 7–12)*
+### 📅 Phase 3 - Automated Remediation *(Months 7–12)*
 
 - Promote approved scripts to standard change status and enable automated execution
 - Expand script library to cover Wi-Fi reconnection, printer spooler reset, USB driver reinstall, VPN certificate renewal
@@ -393,7 +393,7 @@ The following phased roadmap is designed for an organisation with an existing IT
 - Introduce monthly CAB sub-committee for script governance
 - **Target:** 40% of top-10 issue types resolved without human intervention
 
-### 📅 Phase 4 — Optimisation and AI Integration *(Months 13–24)*
+### 📅 Phase 4 - Optimisation and AI Integration *(Months 13–24)*
 
 - Deploy ML-based triage to classify incoming tickets and recommend scripts before technician review
 - Train model on 12 months of resolved ticket data; validate against 6C governance framework
@@ -407,23 +407,23 @@ The following phased roadmap is designed for an organisation with an existing IT
 
 ### 9.1 Opportunities
 
-The convergence of ITIL v5's structural framework with customer success monitoring philosophies creates a compelling opportunity for service desks. **Proactive monitoring** reduces mean time to detect (MTTD) from the user-report moment to the event-detection moment, often hours earlier. **Automated remediation** reduces mean time to resolve (MTTR) for well-understood issues from tens of minutes to seconds. Together, these shifts can materially reduce the **Disruption Index** — the single metric most strongly correlated with user satisfaction in endpoint support contexts.
+The convergence of ITIL v5's structural framework with customer success monitoring philosophies creates a compelling opportunity for service desks. **Proactive monitoring** reduces mean time to detect (MTTD) from the user-report moment to the event-detection moment, often hours earlier. **Automated remediation** reduces mean time to resolve (MTTR) for well-understood issues from tens of minutes to seconds. Together, these shifts can materially reduce the **Disruption Index** - the single metric most strongly correlated with user satisfaction in endpoint support contexts.
 
-The PSLM's feedback loop from *Support* to *Discover* also creates a natural mechanism for **evidence-based hardware procurement**. Service desks that systematically capture failure data will be able to advise procurement teams on which device models, peripheral brands, and driver versions generate disproportionate support load — a capability that has historically required manual effort and was rarely exercised.
+The PSLM's feedback loop from *Support* to *Discover* also creates a natural mechanism for **evidence-based hardware procurement**. Service desks that systematically capture failure data will be able to advise procurement teams on which device models, peripheral brands, and driver versions generate disproportionate support load - a capability that has historically required manual effort and was rarely exercised.
 
 ### 9.2 Challenges and Risks
 
-> ⚠️ **Automation confidence** — automated scripts that misconfigure network settings or roll back drivers incorrectly can cause more harm than the original issue. Rigorous testing environments and conservative initial scope are essential.
+> ⚠️ **Automation confidence** - automated scripts that misconfigure network settings or roll back drivers incorrectly can cause more harm than the original issue. Rigorous testing environments and conservative initial scope are essential.
 
-> ⚠️ **User trust** — proactive outreach can be perceived as surveillance if not communicated transparently. Clear messaging about *what* is monitored and *why* is critical to XLA outcomes.
+> ⚠️ **User trust** - proactive outreach can be perceived as surveillance if not communicated transparently. Clear messaging about *what* is monitored and *why* is critical to XLA outcomes.
 
-> ⚠️ **Tool sprawl** — effective proactive monitoring requires integration between ITSM platforms, endpoint agents, WLAN controllers, and DHCP/DNS servers. Organisations with fragmented tooling may need significant integration investment before the IASD model delivers returns.
+> ⚠️ **Tool sprawl** - effective proactive monitoring requires integration between ITSM platforms, endpoint agents, WLAN controllers, and DHCP/DNS servers. Organisations with fragmented tooling may need significant integration investment before the IASD model delivers returns.
 
-> ⚠️ **Skill transition** — ITIL v5's MSF certification pathway requires service desk analysts to develop competency in monitoring data interpretation, script governance, and XLA management — skills not typically emphasised in traditional ITIL training.
+> ⚠️ **Skill transition** - ITIL v5's MSF certification pathway requires service desk analysts to develop competency in monitoring data interpretation, script governance, and XLA management - skills not typically emphasised in traditional ITIL training.
 
 ### 9.3 Future Directions
 
-ITIL v5's **AI Governance extension module** — currently in development as a standalone certification — will provide more detailed guidance on agentic AI in ITSM contexts. As large language model-based triage agents mature, the boundary between automated remediation and autonomous AI operation will require careful governance. The IASD model described in this paper provides a principled starting point for organisations that will need to extend their governance frameworks as AI capabilities advance.
+ITIL v5's **AI Governance extension module** - currently in development as a standalone certification - will provide more detailed guidance on agentic AI in ITSM contexts. As large language model-based triage agents mature, the boundary between automated remediation and autonomous AI operation will require careful governance. The IASD model described in this paper provides a principled starting point for organisations that will need to extend their governance frameworks as AI capabilities advance.
 
 ---
 
@@ -433,7 +433,7 @@ ITIL Version 5 arrives at exactly the moment when service desks are under pressu
 
 The **Integrated Active Service Desk (IASD)** model proposed in this paper translates these principles into actionable practice for the most frequent and tangible service desk workload: the physical-layer issues that affect every device-dependent worker, every day. By combining endpoint health scoring, network-side monitoring, structured automated remediation, and experience-centred measurement, organisations can shift their service desks from **cost centres that react to calls** to **proactive partners that prevent disruption**.
 
-> The implementation roadmap provided is intentionally conservative. Automation that is introduced carefully, governed rigorously, and measured against user experience outcomes will compound in value over time. Automation introduced hastily without governance will erode trust — both user trust and the trust of the organisation in its ITSM function.
+> The implementation roadmap provided is intentionally conservative. Automation that is introduced carefully, governed rigorously, and measured against user experience outcomes will compound in value over time. Automation introduced hastily without governance will erode trust - both user trust and the trust of the organisation in its ITSM function.
 >
 > **ITIL v5's framework, applied thoughtfully, makes the conservative path the winning path.**
 
