@@ -12,7 +12,7 @@
 
 ## About This Series
 
-This repository contains a series of research papers and implementation guides exploring how **ITIL Version 5** (released February–May 2026) can be applied practically to IT service desk operations. The series focuses on on-site and remote environments - desktop office hardware, Microsoft 365 cloud services, Microsoft Intune device management, and point-of-sale hardware - and provides working code patterns, policy templates, and integration guides throughout.
+This repository contains a series of research papers and implementation guides exploring how **ITIL Version 5** (released February–May 2026) can be applied practically to IT service desk operations. The series focuses on on-site and remote environments - desktop office hardware, Microsoft 365 cloud services, Microsoft Intune device management, and point-of-sale hardware. It provides working code patterns, policy templates, and integration guides throughout.
 
 The series is structured as a primary research paper accompanied by supplementary implementation chapters. Each chapter builds on the last; reading the primary paper first is recommended.
 
