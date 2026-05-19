@@ -53,9 +53,9 @@ This paper focuses on the physical-layer and near-physical-layer issues that con
 
 ### 2.1 From Service Value Chain to Product and Service Lifecycle Model
 
-ITIL 4 introduced the Service Value System (SVS) with its six-activity Service Value Chain (SVC). ITIL v5 replaces the SVC with the **Product and Service Lifecycle Model (PSLM)**, which treats every service as a living, learning system rather than a linear chain of activities. The PSLM has five stages:
+ITIL 4 introduced the Service Value System (SVS) with its six-activity Service Value Chain (SVC). ITIL v5 replaces the SVC with the **Product and Service Lifecycle Model (PSLM)**, which treats every service as a living, learning system rather than a linear chain of activities. The PSLM has eight stages:
 
-> **Discover → Design → Transition → Support → Improve**
+> **Discover → Design → Acquire → Build → Transition → Operate → Deliver → Support**
 
 Critically, data generated in the **Support** stage feeds directly back into **Discover** and **Design**, creating a continuous improvement loop that is structurally enforced rather than aspirational.
 
@@ -63,8 +63,11 @@ For hardware and connectivity support, this means:
 
 - Failure patterns captured at the service desk directly inform procurement decisions *(Discover)*
 - Recurring peripheral compatibility issues trigger design reviews *(Design)*
+- Hardware procurement and vendor contracts are governed through the Acquire stage *(Acquire)*
 - Known defects identified through problem management are embedded in release notes *(Transition)*
-- Automated diagnostics generate the data that feeds all upstream stages *(Support → Improve)*
+- Day-to-day service desk activity — incident management, event monitoring, request fulfilment — lives in the Operate stage *(Operate)*
+- XLA reporting and user satisfaction measurement are formalised in the Deliver stage *(Deliver)*
+- Automated diagnostics generate the data that feeds all upstream stages *(Support → Discover)*
 
 ### 2.2 The Monitor, Support and Fulfil (MSF) Practice Cluster
 
@@ -93,20 +96,20 @@ ITIL v5 formally adopts **XLAs** as a standard element of service and product ma
 - **First-Contact Sentiment** - Was the user's experience of the interaction positive?
 - **Recurrence Rate** - Did the same issue return within 30 days?
 
-### 2.4 Native AI Governance: The 6C Model
+### 2.4 Native AI Governance: The 6C AI Capability Model
 
-ITIL v5 introduces a dedicated AI governance framework organised around six dimensions (the **6C Model**). For an automated service desk, each dimension has specific implications:
+ITIL v5 introduces a structured AI capability framework organised around six dimensions (the **6C AI Capability Model**). Rather than a maturity scale, it is an audit and planning tool — organisations may be advanced in one capability while nascent in another. For an active service desk, each dimension maps to concrete practice:
 
 | 6C Dimension | Service Desk Application |
 | --- | --- |
-| **Control** | Who authorises automated remediation actions (e.g., driver rollback)? |
-| **Compliance** | Do automated actions comply with change and asset management records? |
-| **Culture** | Are technicians upskilled to work alongside AI triage, not replaced? |
-| **Competence** | Is the AI model validated for the specific hardware catalogue in use? |
-| **Communication** | Are users informed when automated vs. human resolution is occurring? |
-| **Continual Improvement** | Is AI performance reviewed against XLA outcomes regularly? |
+| **Creation** | AI generates first-draft knowledge articles and candidate remediation scripts from resolved incident data and problem records |
+| **Curation** | Human review of AI-generated knowledge articles before publication; governance of the approved standard change register; quality scoring of AI-suggested scripts |
+| **Clarification** | Virtual agent disambiguates vague incident descriptions; NLP classifies email and phone-transcript requests to the correct queue; AI surfaces intent from incomplete diagnostic reports |
+| **Cognition** | Predictive alerting from endpoint telemetry identifies degradation before user impact; ML-based triage classifies incoming tickets and recommends resolution paths; AI-assisted root-cause analysis in Problem Management |
+| **Communication** | Virtual service desk agent handles Tier 1 requests autonomously; automated proactive outreach when endpoint health scores degrade; users are explicitly informed when resolution is automated vs. human-led |
+| **Coordination** | AI orchestrates multi-step remediation workflows across resolver groups; automated routing of incidents to correct teams; defined escalation path when automation encounters out-of-scope conditions |
 
-> The 6C model prevents organisations from deploying AI automation without accountability structures - a risk especially acute when automated scripts modify hardware configurations or network settings.
+> The 6C Capability Model provides the vocabulary and structure to audit existing AI use and identify governance gaps before they become incidents — particularly important when automated scripts act on user hardware configurations or network settings.
 
 ---
 
@@ -210,7 +213,7 @@ The MSF practice cluster mandates that Monitoring and Event Management feeds dir
 
 ### 5.1 The Automation Maturity Ladder
 
-Not all service desks are ready for the same level of automation. ITIL v5's 6C governance model implicitly requires organisations to establish maturity before expanding automation scope. The following four-stage ladder provides a structured progression:
+Not all service desks are ready for the same level of automation. ITIL v5's 6C AI Capability Model implicitly requires organisations to establish capability maturity before expanding automation scope. The following four-stage ladder provides a structured progression:
 
 | Stage | Capability | Example Actions | Governance Gate |
 | :---: | --- | --- | --- |
@@ -335,19 +338,30 @@ The IASD model tracks the following XLA dimensions for hardware, peripheral, and
 
 ## 7. AI Governance and Change Management
 
-### 7.1 Applying ITIL v5's 6C Model to Automated Remediation
+### 7.1 Applying ITIL v5's 6C AI Capability Model to Automated Remediation
 
-Every automated remediation action on a user's device constitutes a **change**. ITIL v5's Change Enablement practice (in the PIC module) and its 6C AI governance model together require the following controls:
+Every automated remediation action on a user's device constitutes a **change**. ITIL v5's Change Enablement practice (in the PIC module) and its 6C AI Capability Model together define what responsible automation looks like in practice:
 
-- **Standard Change Classification** - automated scripts that have been tested, approved, and documented must be classified as standard changes, removing the need for individual approval and enabling automated execution
-- **Audit Trail** - every automated action must be logged with timestamp, action taken, user device, outcome, and the monitoring event that triggered it
-- **Rollback Capability** - all standard changes must have a documented rollback procedure (e.g., driver rollback via `DISM`)
-- **Human Override** - users and technicians must be able to suppress automated actions on specific devices
-- **Scope Boundaries** - automation must never exceed the scope of the standard change record; any action outside scope must halt and escalate
+| 6C Dimension | Automated Remediation Obligation |
+| --- | --- |
+| **Creation** | Remediation scripts and knowledge articles generated or suggested by AI must be created through a documented process — including test coverage, rollback procedures, and scope definitions |
+| **Curation** | Every AI-generated script must pass human review and formal standard change classification before autonomous execution is permitted; the approved script library is a curated, governed artefact |
+| **Clarification** | Diagnostic automation must accurately interpret telemetry without false positives; ambiguous signals must escalate to human review rather than trigger remediation |
+| **Cognition** | ML-based triage and predictive alerting must be validated against historical data; accuracy, false positive rate, and any device-class bias must be tracked and reviewed regularly against XLA outcomes |
+| **Communication** | Every automated action must notify the affected user with a clear explanation of what ran and what changed; users and technicians must always be able to suppress automation on specific devices |
+| **Coordination** | Automation must never exceed the scope of its standard change record; any out-of-scope condition must halt and escalate to a human technician; a full audit trail (timestamp, action, device, trigger event, outcome) is mandatory |
+
+**Core governance controls required for all automated remediation:**
+
+- **Standard Change Classification** — automated scripts that have been tested, approved, and documented must be classified as standard changes, removing the need for individual approval and enabling autonomous execution
+- **Audit Trail** — every automated action must be logged with timestamp, action taken, user device, outcome, and the monitoring event that triggered it
+- **Rollback Capability** — all standard changes must have a documented rollback procedure (e.g., driver rollback via `DISM`)
+- **Human Override** — users and technicians must be able to suppress automated actions on specific devices
+- **Scope Boundaries** — automation must never exceed the scope of the standard change record; any action outside scope must halt and escalate
 
 ### 7.2 Ethical and Compliance Considerations
 
-Automated access to user endpoints raises privacy and compliance questions that ITIL v5's *Compliance* and *Culture* dimensions directly address:
+Automated access to user endpoints raises privacy and compliance questions:
 
 - **Informed Consent** - users should be aware that endpoint agents collect telemetry and may initiate automated actions; this should be stated in the acceptable use policy
 - **Data Minimisation** - collect only the telemetry required to calculate health scores and diagnose issues; do not retain raw logs beyond **90 days** unless required for problem management
@@ -396,7 +410,7 @@ The following phased roadmap is designed for an organisation with an existing IT
 ### 📅 Phase 4 - Optimisation and AI Integration *(Months 13–24)*
 
 - Deploy ML-based triage to classify incoming tickets and recommend scripts before technician review
-- Train model on 12 months of resolved ticket data; validate against 6C governance framework
+- Train model on 12 months of resolved ticket data; validate against 6C AI Capability framework
 - Introduce predictive replacement scheduling for devices with consistently low health scores
 - Expand XLA framework to include Disruption Index and Recurrence Rate
 - Pursue ITIL v5 Practice Manager (MSF) certification for senior service desk analysts
@@ -429,7 +443,7 @@ ITIL v5's **AI Governance extension module** - currently in development as a sta
 
 ## 10. Conclusion
 
-ITIL Version 5 arrives at exactly the moment when service desks are under pressure to do more with less while simultaneously meeting rising user expectations. Its **Product and Service Lifecycle Model** provides the structural rationale for treating every hardware failure, peripheral malfunction, or connectivity drop as data that should flow back into service improvement. Its **Monitor, Support and Fulfil** practice cluster formally unites monitoring with service desk operations. Its adoption of **Experience Level Agreements** provides the measurement language to capture what traditional SLAs miss. And its **6C AI governance model** provides the accountability framework to deploy automation responsibly.
+ITIL Version 5 arrives at exactly the moment when service desks are under pressure to do more with less while simultaneously meeting rising user expectations. Its **Product and Service Lifecycle Model** provides the structural rationale for treating every hardware failure, peripheral malfunction, or connectivity drop as data that should flow back into service improvement. Its **Monitor, Support and Fulfil** practice cluster formally unites monitoring with service desk operations. Its adoption of **Experience Level Agreements** provides the measurement language to capture what traditional SLAs miss. And its **6C AI Capability Model** provides the audit and planning framework to deploy automation responsibly.
 
 The **Integrated Active Service Desk (IASD)** model proposed in this paper translates these principles into actionable practice for the most frequent and tangible service desk workload: the physical-layer issues that affect every device-dependent worker, every day. By combining endpoint health scoring, network-side monitoring, structured automated remediation, and experience-centred measurement, organisations can shift their service desks from **cost centres that react to calls** to **proactive partners that prevent disruption**.
 

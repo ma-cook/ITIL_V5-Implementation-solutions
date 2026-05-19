@@ -397,18 +397,20 @@ All credentials for external services are stored in a secrets manager — **Azur
 - All internal service-to-service communication uses mutual TLS (mTLS) in production deployments
 - The UIWP is not exposed to the public internet; it is an internal tool accessible via VPN or corporate network only (or via Azure AD-protected Application Proxy for remote access)
 
-**ITIL v5 6C alignment for the UIWP itself:**
+**ITIL v5 6C AI Capability Model alignment for the UIWP itself:**
 
-The UIWP, as an automation-adjacent platform, must itself comply with the 6C AI Governance Model when it takes actions on behalf of users:
+The UIWP, as an automation-adjacent platform, must itself be evaluated against the 6C AI Capability Model when it takes actions on behalf of users or surfaces AI-generated insights:
 
 | 6C Dimension | UIWP Implementation |
 | --- | --- |
-| **Control** | All write actions via the UIWP require an authenticated user with the appropriate RBAC role; no automated write actions without explicit user initiation |
-| **Compliance** | Every UIWP-initiated API call is written to the `audit_log` table with user, action, target system, and result |
-| **Culture** | UIWP training materials provided to all service desk staff; technicians are explicitly informed which actions are routed through the UIWP vs. requiring direct portal access |
-| **Competence** | Integration health dashboard in UIWP shows real-time status of all source system connections; data staleness indicators on each panel |
-| **Communication** | Where UIWP takes an action (e.g., raises a JSM ticket), the confirmation message tells the user exactly which system was called and what the outcome was |
-| **Continual Improvement** | Monthly integration health review: which APIs are stale? Which rate limits are being hit? Which webhook events are failing validation? |
+| **Creation** | Phase 4 ML capabilities generate ticket categorisation suggestions, KB article recommendations, and predicted resolution approaches from aggregated UIWP data; AI-generated summaries in the device context panel |
+| **Curation** | Data quality controls and staleness indicators on every panel; validation of source system data before display; governance review of AI-generated summaries before they influence technician decisions |
+| **Clarification** | Cross-source correlation contextualises ambiguous situations (e.g., WLAN degradation + WEC NIC errors + JSM open ticket combined into a coherent device health narrative rather than three separate signals) |
+| **Cognition** | Phase 4 predictive device health alerts based on trend analysis across multiple data sources; ML ticket classification for intelligent queue management; anomaly detection across correlated datasets |
+| **Communication** | Every UIWP-initiated action presents a confirmation message stating which system was called and the outcome; users and technicians are explicitly informed when actions are automated vs. manually initiated |
+| **Coordination** | UIWP orchestrates write actions across multiple systems (JSM, Intune) with RBAC gates, audit logging (`audit_log` table), and defined escalation paths when integration sources are unavailable |
+
+> **Governance note:** The operational controls underpinning 6C-compliant UIWP operation — authenticated RBAC roles for all write actions, full audit logging of every API call, and scope limitation per action type — are specified in Section 4.5 (Integration Layer Security) and Section 7.2 (Change Management).
 
 ---
 
@@ -519,13 +521,16 @@ Add write actions and the POS-specific view:
 
 ### 7.1 The UIWP as an ITIL v5 Asset
 
-The UIWP itself is a **service component** within the PSLM. It must be managed through the same lifecycle model it helps to operate:
+The UIWP itself is a **service component** within the PSLM. It must be managed through the same 8-stage lifecycle model it helps to operate:
 
 - **Discover:** Business case validated against technician productivity data (time-per-investigation baseline from Phase 0)
 - **Design:** Architecture as specified in this paper; security model reviewed by security team; RBAC design reviewed with service desk manager and store operations lead
+- **Acquire:** Hosting infrastructure, third-party component licences, and any contracted development resources sourced through the standard procurement process
+- **Build:** UIWP developed and tested per phase plan; integration tests for each source system; acceptance criteria reviewed against original business case
 - **Transition:** Phased rollout per Section 6; training materials published; Normal Change process in JSM for each phase activation
-- **Support:** UIWP integration health dashboard (as described in Section 4.5); on-call runbook for when an integration source is unavailable; UIWP treated as a managed service with its own incident category
-- **Improve:** Monthly integration health review; quarterly UX review with technician users; XLA tracking for the UIWP itself (does it make technicians faster? does it reduce ticket handling time?)
+- **Operate:** UIWP in live service; incident management for integration outages; on-call runbook maintained
+- **Deliver:** UIWP XLA tracking — does it make technicians faster? Does it reduce ticket handling time? Does it reduce cognitive overhead?
+- **Support:** UIWP integration health dashboard (as described in Section 4.5); monthly integration health review; quarterly UX review with technician users
 
 ### 7.2 Change Management for the UIWP
 
@@ -574,7 +579,7 @@ The following stack represents a practical, supportable choice for a mid-market 
 
 ## 9. Conclusion
 
-The four preceding papers in this series established a complete framework for an **Integrated Active Service Desk** under ITIL v5: the theoretical model, the custom software implementations, the ITSM and device management integrations, and the change management governance that ties them together. The capability built across those papers is significant — but only if technicians can access it efficiently.
+The five preceding papers in this series established a complete framework for an **Integrated Active Service Desk** under ITIL v5: the foundation training that defines the core concepts, the theoretical model applied to an active service desk, the custom software implementations, the ITSM and device management integrations, and the change management governance that ties them together. The capability built across those papers is significant — but only if technicians can access it efficiently.
 
 The **Unified ITSM Web Platform (UIWP)** proposed in this paper is the operational front-end that makes the full IASD capability accessible from a single, role-appropriate interface. Its design recognises the practical limits of vendor portal embedding (most enterprise portals block iframe embedding) and therefore prioritises **data routing via REST and Graph APIs** as the primary integration mode, supplemented by **webhook push** for real-time events and **selective Grafana panel embedding** for metric visualisations.
 
@@ -610,13 +615,13 @@ Implemented across the four phases described, the UIWP transforms the IASD from 
 
 ---
 
-*This paper is the fifth and final entry in the ITIL v5 Practical Solutions series. It should be read in conjunction with the preceding four papers, which provide the detailed specifications for all tools, integrations, and policies referenced here.*
+*This paper is the sixth and final entry in the ITIL v5 Practical Solutions series. It should be read in conjunction with the preceding five papers, which provide the conceptual foundation and detailed specifications for all tools, integrations, and policies referenced here.*
 
 ---
 
 <div align="center">
 
 **ITIL v5 Practical Solutions Series** · May 2026
-*Papers: Active Service Desk · Custom Software · Jira & Intune Integration · Change Management · Unified Platform*
+*Papers: Foundation Training · Active Service Desk · Custom Software · Jira & Intune Integration · Change Management · Unified Platform*
 
 </div>
