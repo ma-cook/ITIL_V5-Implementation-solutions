@@ -14,18 +14,36 @@
 
 This repository contains a series of research papers and implementation guides exploring how **ITIL Version 5** (released February–May 2026) can be applied practically to IT service desk operations. The series focuses on on-site and remote environments - desktop office hardware, Microsoft 365 cloud services, Microsoft Intune device management, and point-of-sale hardware. It provides working code patterns, policy templates, and integration guides throughout.
 
-The series is structured as a primary research paper accompanied by supplementary implementation chapters. Each chapter builds on the last; reading the primary paper first is recommended.
+The series is structured as a foundation training document, a primary research paper, and supplementary implementation chapters. Each chapter builds on the last; reading the foundation training document (Paper 1) first is strongly recommended before proceeding to the applied papers.
 
 ---
 
 ## Papers in This Series
 
-### 1. [ITIL Version 5 and the Active Service Desk](ITILV5-active-service-desk-paper.md)
+### 1. [ITIL® (Version 5) Foundation Training Programme](ITIL_Version5_Training_Document.md)
+
+**Type:** Foundation Training Document  
+**Audience:** IT professionals, service desk staff, ITSM practitioners preparing for ITIL v5 certification
+
+The first paper in this series and the recommended starting point for all readers. A structured learning guide covering the complete ITIL® (Version 5) Foundation syllabus, providing the conceptual grounding required to understand the applied papers that follow.
+
+**Key topics covered:**
+- What is ITIL (Version 5)? Evolution from ITIL 4; content composition (40% retained, 24% updated, 36% new)
+- Certification pathway: Foundation, Bridge, Advanced modules, Managing Professional Transition
+- The 8-Stage Product and Service Lifecycle Model (Discover → Design → Acquire → Build → Transition → Operate → Deliver → Support)
+- The 6C AI Capability Model (Creation, Curation, Clarification, Cognition, Communication, Coordination)
+- The 7 Guiding Principles (unchanged from ITIL 4)
+- Core management practices: Incident, Problem, Change Enablement, Service Desk, and 8 others
+- Foundation exam format, topic weighting, study path, and key terms glossary
+
+---
+
+### 2. [ITIL Version 5 and the Active Service Desk](ITILV5-active-service-desk-paper.md)
 
 **Type:** Primary Research Paper  
 **Audience:** Service desk managers, ITSM practitioners, IT leadership
 
-The foundational paper of this series. Examines how ITIL v5's new constructs - the **Product and Service Lifecycle Model (PSLM)**, **Experience Level Agreements (XLAs)**, and the **6C AI Governance Model** - apply to an active service desk responsible for hardware, peripheral, and connectivity support. Proposes the **Integrated Active Service Desk (IASD)** model.
+The primary research paper of this series. Examines how ITIL v5's new constructs - the **Product and Service Lifecycle Model (PSLM)**, **Experience Level Agreements (XLAs)**, and the **6C AI Capability Model** - apply to an active service desk responsible for hardware, peripheral, and connectivity support. Proposes the **Integrated Active Service Desk (IASD)** model.
 
 **Key topics covered:**
 - ITIL v5 vs ITIL 4: key changes for service desk operations
@@ -40,7 +58,7 @@ The foundational paper of this series. Examines how ITIL v5's new constructs - t
 
 ---
 
-### 2. [Practical Custom Software for Recurring Issue Tracking](ITIL_v5-Custom-Software-Implementation.md)
+### 3. [Practical Custom Software for Recurring Issue Tracking](ITIL_v5-Custom-Software-Implementation.md)
 
 **Type:** Supplementary Implementation Chapter  
 **Audience:** IT engineers, developers, service desk technical leads
@@ -57,7 +75,7 @@ Covers purpose-built custom software for the three highest-volume recurring issu
 
 ---
 
-### 3. [Jira Service Management & Microsoft Intune Integration](ITILV5-Jira-Intune-Integration.md)
+### 4. [Jira Service Management & Microsoft Intune Integration](ITILV5-Jira-Intune-Integration.md)
 
 **Type:** Supplementary Implementation Chapter  
 **Audience:** IT engineers, Jira administrators, Intune administrators
@@ -79,7 +97,7 @@ Connects the custom monitoring tools from Chapter 2 to Jira Service Management (
 
 ---
 
-### 4. [ITIL v5 Change Management, Policy Alignment & Implementation Phases](ITILV5-Change-Management-Policy-Alignment.md)
+### 5. [ITIL v5 Change Management, Policy Alignment & Implementation Phases](ITILV5-Change-Management-Policy-Alignment.md)
 
 **Type:** Supplementary Implementation Chapter  
 **Audience:** ITSM managers, change managers, IT directors, compliance leads
@@ -101,7 +119,7 @@ Addresses the organisational and governance dimension of an ITIL v5 IASD transit
 
 ---
 
-### 5. [Unified ITSM Web Platform: Architecture and Integration Guide](ITILV5-Unified-Platform-Architecture.md)
+### 6. [Unified ITSM Web Platform: Architecture and Integration Guide](ITILV5-Unified-Platform-Architecture.md)
 
 **Type:** Final Synthesis Paper  
 **Audience:** IT architects, service desk managers, IT directors, senior engineers
@@ -117,7 +135,7 @@ The capstone paper of this series. Synthesises all preceding papers and proposes
 - Key UI views: Device Context Panel, Printer Fleet Health, POS Operations View, XLA Reports, Change Register, Endpoint Health Heatmap
 - Illustrated user journeys: device investigation, printer fleet morning check, POS incident response
 - **Four-phase implementation plan** aligned to IASD deployment phases
-- ITIL v5 governance alignment: UIWP as a PSLM-managed service; 6C compliance for UIWP-initiated actions; data governance and DPIA obligations
+- ITIL v5 governance alignment: UIWP as a PSLM-managed service; 6C AI Capability Model compliance for UIWP-initiated actions; data governance and DPIA obligations
 - Full technology stack recommendation with rationale
 
 **Technologies:** React, TypeScript, Node.js, FastAPI, PostgreSQL, Redis, Elasticsearch, Grafana, Docker/Kubernetes, Azure Key Vault, Entra ID SSO
@@ -127,19 +145,22 @@ The capstone paper of this series. Synthesises all preceding papers and proposes
 ## Quick Reference: How the Series Fits Together
 
 ```
-Research Paper (Paper 1)
-│   ITIL v5 framework · IASD model · XLA · 6C governance · roadmap
+Foundation Training (Paper 1)
+│   ITIL v5 concepts · 8-stage lifecycle · 6C AI Capability Model · practices · exam guide
 │
-├── Custom Software (Paper 2)
+Research Paper (Paper 2)
+│   ITIL v5 framework · IASD model · XLA · 6C AI Capability · roadmap
+│
+├── Custom Software (Paper 3)
 │   Printer (PLA) · POS (PHMS) · M365 (MIT) · open-source ITSM integration
 │
-├── Jira & Intune Integration (Paper 3)
+├── Jira & Intune Integration (Paper 4)
 │   JSM API patterns · Intune Remediations · WEC desktop monitoring · security
 │
-├── Change Management & Policy (Paper 4)
+├── Change Management & Policy (Paper 5)
 │   Gap analysis · policy templates · change workflows · phased roadmap · CAB governance
 │
-└── Unified Platform Architecture (Paper 5)  ← Final Synthesis
+└── Unified Platform Architecture (Paper 6)  ← Final Synthesis
     Integration assessment · system architecture · UI views · implementation phasing
 ```
 
@@ -165,16 +186,17 @@ Research Paper (Paper 1)
 
 | ITIL v5 Practice | Papers Where Covered |
 | --- | --- |
-| Service Desk | 1, 2, 3, 4, 5 |
-| Incident Management | 1, 2, 3, 4, 5 |
-| Problem Management | 1, 2, 3, 4, 5 |
-| Monitoring & Event Management | 1, 2, 3, 5 |
-| Service Request Management | 1, 2, 5 |
-| Change Enablement (PIC module) | 1, 4, 5 |
-| Service Level Management / XLA | 1, 4, 5 |
-| AI Governance (6C model) | 1, 4, 5 |
-| IT Asset Management / CMDB | 2, 3, 4, 5 |
-| Supplier Management | 2 |
+| Service Desk | 1, 2, 3, 4, 5, 6 |
+| Incident Management | 1, 2, 3, 4, 5, 6 |
+| Problem Management | 1, 2, 3, 4, 5, 6 |
+| Monitoring & Event Management | 1, 2, 3, 4, 6 |
+| Service Request Management | 1, 2, 3, 6 |
+| Change Enablement (PIC module) | 1, 2, 5, 6 |
+| Service Level Management / XLA | 1, 2, 5, 6 |
+| AI Governance (6C AI Capability Model) | 1, 2, 5, 6 |
+| IT Asset Management / CMDB | 3, 4, 5, 6 |
+| Supplier Management | 3 |
+| 8-Stage Product and Service Lifecycle (PSLM) | 1, 2, 6 |
 
 ---
 
